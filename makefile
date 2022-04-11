@@ -38,3 +38,11 @@ app:
 .PHONY: migrate
 migrate:
 	$(dc) exec express /bin/sh -c "npx prisma migrate dev"
+
+.PHONY: open
+open:
+	python3 ./python/test.py true
+
+.PHONY: close
+close:
+	python3 ./python/test.py false

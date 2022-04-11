@@ -19,12 +19,14 @@ app.get('/' , function(req, res){
 app.post('/', async function(req, res){
   await prisma.status.create({
     data: {
-      body: req.body?.status ? true : false,
+      body: JSON.parse(req.body?.status),
     },
   })
 
   const status = await prisma.status.findMany()
   io.emit('event', status);
+
+  res.send('status update!!')
 })
 
 io.on('connection', async function(socket){
