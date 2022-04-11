@@ -26,6 +26,7 @@
 
 <script>
   const socket = io();
+  let init = true
 
   socket.on('event', function(status){
     document.getElementById('status').innerHTML = status.slice(-1)[0].body ?
@@ -33,32 +34,46 @@
       '<img src="/images/lock" alt="閉まっている時のアイコン" width="300" height="380" />'
 
     const element = document.getElementById('history')
-    status.forEach(value => {
+
+    const newState = (value) => {
       const li = document.createElement('li')
-
-      var date = new Date(value.createdAt);
-
-      const formatDate = (date)=>{
-        let formatted = date.getFullYear() + "-" + 
-        (date.getMonth() + 1).toString().padStart(2, "0") + "-" + 
-        date.getDate().toString().padStart(2, "0") + "&nbsp;" + 
-        date.getHours().toString().padStart(2, "0") + ":" + 
-        date.getMinutes().toString().padStart(2, "0") + ":" + 
-        date.getSeconds().toString().padStart(2, "0");
-        return formatted;
-      }
-
-      li.innerHTML = `
-        <div class="card">
-          <p>${formatDate(date)}</p>
-          <div class="detail">
-            <span class="status">${value.body ? "OPEN" : "CLOSE" }</span>
-            <span class="circle" style="background-color: ${value.body ? "blue" : "red" }"></span>
+  
+        var date = new Date(value.createdAt);
+  
+        const zeroPadding = (date) => {
+          return date.toString().padStart(2, "0")
+        }
+  
+        const formatDate = (date)=>{
+          let formatted = date.getFullYear() + "-" + 
+          zeroPadding((date.getMonth() + 1)) + "-" + 
+          zeroPadding(date.getDate()) + "&nbsp;" + 
+          zeroPadding(date.getHours()) + ":" + 
+          zeroPadding(date.getMinutes()) + ":" + 
+          zeroPadding(date.getSeconds());
+          return formatted;
+        }
+  
+        li.innerHTML = `
+          <div class="card">
+            <p>${formatDate(date)}</p>
+            <div class="detail">
+              <span class="status">${value.body ? "OPEN" : "CLOSE" }</span>
+              <span class="circle" style="background-color: ${value.body ? "blue" : "red" }"></span>
+            </div>
           </div>
-        </div>
-      `
-      element.appendChild(li)
-    })
+        `
+        element.appendChild(li)
+    }
+
+    if(init){
+      status.map(value => {
+        newState(value)
+      })
+      init = false
+    } else {
+      newState(status.slice(-1)[0])
+    }
   })
 </script>
 
