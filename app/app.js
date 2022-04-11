@@ -4,7 +4,7 @@ const http = require("http").Server(app);
 const io = require("socket.io")(http);
 const bodyParser = require("body-parser");
 
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 8080;
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
@@ -33,7 +33,7 @@ app.post("/", async function (req, res) {
 
 io.on("connection", async function (socket) {
   const status = await prisma.status.findMany();
-  if (status === []) socket.emit("event", status);
+  if (status.length !== 0) socket.emit("event", status);
 
   socket.on("event", function (status) {
     io.emit("event", status);
