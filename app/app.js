@@ -31,7 +31,7 @@ app.post('/', async function(req, res){
 
 io.on('connection', async function(socket){
   const status = await prisma.status.findMany()
-  socket.emit('event', status);
+  if(status === []) socket.emit('event', status);
 
   socket.on('event', function(status){
     io.emit('event', status);

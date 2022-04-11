@@ -1,10 +1,5 @@
 dc := user=$(USER) docker-compose
 
-.PHONY: init
-init:
-	cp ./app/.env.example ./app/.env
-	$(dc) up -d --build
-
 .PHONY: up
 up:
 	$(dc) up -d --build
@@ -37,7 +32,7 @@ app:
 
 .PHONY: migrate
 migrate:
-	$(dc) exec express /bin/sh -c "npx prisma migrate dev"
+	$(dc) exec express /bin/sh -c "npx prisma migrate dev --name init"
 
 .PHONY: open
 open:
