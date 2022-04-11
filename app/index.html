@@ -5,17 +5,17 @@
     <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
-    <form action="/" method="post">
-      <button>Send</button>
-    </form>
+  <span id="status"></span>
 
-    <span id="status"></span>
+  <span id="history"></span>
 
-    <script>
-      const socket = io();
-      socket.on('event', function(status){
-        document.getElementById('status').innerHTML = "<p>" + status + "</p>";
-      })
-    </script>
+  <script>
+    const socket = io();
+
+    socket.on('event', function(status){
+      document.getElementById('status').innerHTML = "<p>" + status.slice(-1)[0].body + "</p>";
+      document.getElementById('history').innerHTML = JSON.stringify(status);
+    })
+  </script>
 </body>
 </html>
