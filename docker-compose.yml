@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+
+    express:
+        image: node:14.17.0
+        container_name: express
+        volumes:
+            - ./app:/app
+        working_dir: /app
+        command: >
+          sh -c "
+            npm install &&
+            node app
+          "
+        tty: true
+        ports:
+            - "8080:80"
