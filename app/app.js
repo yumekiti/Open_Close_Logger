@@ -18,7 +18,7 @@ app.post('/', async function(req, res){
   })
   
   const status = await prisma.status.findMany()
-  io.emit('message', status.body);
+  io.emit('message', status.slice(-1)[0].body);
 })
 
 io.on('connection',function(socket){
