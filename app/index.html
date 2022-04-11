@@ -28,12 +28,22 @@
   const socket = io();
 
   socket.on('event', function(status){
-    document.getElementById('status').innerHTML = status.slice(-1)[0].body ? '<img src="/images/unlock" alt="開いている時のアイコン" width="300" height="380" />' : '<img src="/images/lock" alt="閉まっている時のアイコン" width="300" height="380" />'
+    document.getElementById('status').innerHTML = status.slice(-1)[0].body ?
+      '<img src="/images/unlock" alt="開いている時のアイコン" width="300" height="380" />' :
+      '<img src="/images/lock" alt="閉まっている時のアイコン" width="300" height="380" />'
 
     const element = document.getElementById('history')
     status.forEach(value => {
       const li = document.createElement('li')
-      li.textContent = JSON.stringify(value)
+      li.innerHTML = `
+        <div class="card">
+          <p>${value.createdAt}</p>
+          <div class="detail">
+            <span class="status">${value.body ? "OPEN" : "CLOSE" }</span>
+            <span class="circle" style="background-color: ${value.body ? "blue" : "red" }"></span>
+          </div>
+        </div>
+      `
       element.appendChild(li)
     })
   })
@@ -91,5 +101,37 @@
   .split-right__inner{
     margin-top: 180px;
     text-align: center;
+  }
+
+  .card {
+    color: #333;
+    width: 80%;
+    padding: 0.3em 0.8em;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    box-shadow: 2px 2px 4px gray;
+    box-sizing: border-box;
+    border: 0.5px solid #e9eaea;
+    border-radius: 10px;
+    text-align: left;
+    padding-left: 50px;
+    padding-bottom: 20px;
+  }
+
+  .status {
+    padding: 0 0.3em;
+    font-size: 0.6em;
+    color: #777;
+  }
+
+  .detail {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .circle {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
   }
 </style>
