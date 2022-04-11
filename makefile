@@ -33,4 +33,8 @@ logs:
 
 .PHONY: app
 app:
-	$(dc) exec app /bin/sh
+	$(dc) exec express /bin/sh
+
+.PHONY: migrate
+migrate:
+	$(dc) exec express /bin/sh -c "npx prisma migrate dev"
