@@ -5,17 +5,91 @@
     <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
-  <span id="status"></span>
+  <header>
+    <h4>OC_trial_Lesson</h4>
+  </header>
 
-  <span id="history"></span>
-
-  <script>
-    const socket = io();
-
-    socket.on('event', function(status){
-        document.getElementById('status').innerHTML = "<p>" + status.slice(-1)[0].body + "</p>";
-        document.getElementById('history').innerHTML = JSON.stringify(status);
-    })
-  </script>
+  <div class="main">
+    <div class="split-item split-left">
+      <div class="split-left__inner">
+        <span id="status"></span>
+      </div>
+    </div>
+    <div class="split-item split-right">
+      <div class="split-right__inner">
+        <ul id="history"></ul>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
+
+<script>
+  const socket = io();
+
+  socket.on('event', function(status){
+    document.getElementById('status').innerHTML = status.slice(-1)[0].body ? '<p>asd</p>' : '<p>asddd</p>'
+
+    const element = document.getElementById('history')
+    status.forEach(value => {
+      const li = document.createElement('li')
+      li.textContent = value.body
+      element.appendChild(li)
+    })
+  })
+</script>
+
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<style>
+  * {
+    font-family: "Roboto";
+    list-style: none;
+    font-size: 22px;
+  }
+
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    position: fixed;
+    background-color: black;
+    width: 100%;
+  }
+
+  header h4 {
+    margin-left: 40px;
+    color: white;
+  }
+
+  .main {
+    display: table;
+    width: 100%;
+  }
+
+  .split-item{
+    display: table-cell;
+    width: 50%;
+  }
+
+  .split-left{
+    top: 40%;
+    left: 0;
+    height: 100%;
+    position: absolute;
+    text-align: center;
+  }
+
+  .split-left__inner{
+    height: 100%;
+    width: 50%;
+    position: fixed;
+  }
+
+  .split-right__inner{
+    margin-top: 180px;
+    text-align: center;
+  }
+</style>
