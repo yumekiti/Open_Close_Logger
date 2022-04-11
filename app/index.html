@@ -13,8 +13,8 @@
     const socket = io();
 
     socket.on('event', function(status){
-      document.getElementById('status').innerHTML = "<p>" + status.slice(-1)[0].body + "</p>";
-      document.getElementById('history').innerHTML = JSON.stringify(status);
+        document.getElementById('status').innerHTML = "<p>" + status.slice(-1)[0].body + "</p>";
+        document.getElementById('history').innerHTML = JSON.stringify(status);
     })
   </script>
 </body>
