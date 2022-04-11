@@ -28,12 +28,12 @@
   const socket = io();
 
   socket.on('event', function(status){
-    document.getElementById('status').innerHTML = status.slice(-1)[0].body ? '<p>asd</p>' : '<p>asddd</p>'
+    document.getElementById('status').innerHTML = status.slice(-1)[0].body ? '<img src="/images/unlock" alt="開いている時のアイコン" width="300" height="380" />' : '<img src="/images/lock" alt="閉まっている時のアイコン" width="300" height="380" />'
 
     const element = document.getElementById('history')
     status.forEach(value => {
       const li = document.createElement('li')
-      li.textContent = value.body
+      li.textContent = JSON.stringify(value)
       element.appendChild(li)
     })
   })
@@ -75,7 +75,7 @@
   }
 
   .split-left{
-    top: 40%;
+    top: 30%;
     left: 0;
     height: 100%;
     position: absolute;

@@ -18,6 +18,14 @@ app.get("/", function (req, res) {
   res.sendFile(__dirname + "/index.html");
 });
 
+app.get("/images/lock", function (req, res) {
+  res.sendFile(__dirname + "/images/lock.png");
+});
+
+app.get("/images/unlock", function (req, res) {
+  res.sendFile(__dirname + "/images/unlock.png");
+});
+
 app.post("/", async function (req, res) {
   await prisma.status.create({
     data: {
