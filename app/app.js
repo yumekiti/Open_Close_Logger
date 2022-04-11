@@ -13,17 +13,17 @@ app.get('/' , function(req, res){
 app.post('/', async function(req, res){
   await prisma.status.create({
     data: {
-      body: false,
+      body: true,
     },
   })
-  
+
   const status = await prisma.status.findMany()
-  io.emit('message', status.slice(-1)[0].body);
+  io.emit('event', status.slice(-1)[0].body);
 })
 
-io.on('connection',function(socket){
-  socket.on('message',function(msg){
-    io.emit('message', msg);
+io.on('connection', function(socket){
+  socket.on('event', function(status){
+    io.emit('event', status);
   });
 });
 
