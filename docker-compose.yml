@@ -3,7 +3,7 @@ version: "3"
 services:
 
     express:
-        image: node:14.17.0
+        image: node:alpine
         container_name: express
         volumes:
             - ./app:/app
@@ -12,7 +12,8 @@ services:
           sh -c "
             npm install -g nodemon &&
             npm install &&
-            nodemon app
+            nodemon app &&
+            touch ./dev.db && chmod 777 ./dev.db
           "
         tty: true
         ports:
