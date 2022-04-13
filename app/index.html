@@ -3,19 +3,25 @@
 <head>
     <title>OC_trial_Lesson</title>
     <script src="/socket.io/socket.io.js"></script>
+    <script src="/client.js"></script>
+    <link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 <body>
-  <span id="status"></span>
+  <header>
+    <h2>OC_trial_Lesson</h2>
+  </header>
 
-  <span id="history"></span>
-
-  <script>
-    const socket = io();
-
-    socket.on('event', function(status){
-        document.getElementById('status').innerHTML = "<p>" + status.slice(-1)[0].body + "</p>";
-        document.getElementById('history').innerHTML = JSON.stringify(status);
-    })
-  </script>
+  <div class="main">
+    <div class="split-item split-left">
+      <div class="split-left__inner">
+        <span id="status"></span>
+      </div>
+    </div>
+    <div class="split-item split-right">
+      <div class="split-right__inner">
+        <ul id="history"></ul>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
