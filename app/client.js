@@ -1,9 +1,6 @@
 // 双方向通信接続
 const socket = io();
 
-// 初期ロードフラグ
-let init = true
-
 // ログの生成
 const newState = (value) => {
   const element = document.getElementById('history')
@@ -43,19 +40,24 @@ const newState = (value) => {
 
 // データの受け取ったとき
 socket.on('event', function(status){
-
-  // 南京錠の画像変更
-  document.getElementById('status').innerHTML = status.slice(-1)[0].body ?
-    '<img src="/images/unlock" alt="開いている時のアイコン" width="300" height="380" />' :
-    '<img src="/images/lock" alt="閉まっている時のアイコン" width="300" height="380" />'
+  // 最新の状態を入れる用
+  let latest
 
   // 初期ロードかどうか
-  if(init){
+  if(Array.isArray(status)){
+    // 最新の状態を入れる
+    latest = status.slice(-1)[0].body
     // 複数ログを生成
     status.map(value => newState(value))
-    init = false
   } else {
+    // 最新の状態を入れる
+    latest = status.body
     // 単一ログを生成
-    newState(status.slice(-1)[0])
+    newState(status)
   }
+
+  // 南京錠の画像変更
+  document.getElementById('status').innerHTML = latest ?
+  '<img src="/images/unlock" alt="開いている時のアイコン" width="300" height="380" />' :
+  '<img src="/images/lock" alt="閉まっている時のアイコン" width="300" height="380" />'
 })

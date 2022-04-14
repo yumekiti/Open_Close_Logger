@@ -44,17 +44,14 @@ app.get("/images/unlock", function (req, res) {
 app.post("/", async function (req, res) {
 
   // 新しい状態データの作成
-  await prisma.status.create({
+  const newState = await prisma.status.create({
     data: {
       body: JSON.parse(req.body?.status),
     },
   });
 
-  // 状態データの取得
-  const status = await prisma.status.findMany();
-
   // 状態データの送信
-  io.emit("event", status);
+  io.emit("event", newState);
 
   // 変更があったことを知らせる
   res.send("status update!!");
