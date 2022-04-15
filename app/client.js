@@ -1,29 +1,29 @@
-// 双方向通信接続
+// モジュールの読み込み
 const socket = io();
+
+// ゼロ埋め
+const zeroPadding = (date) => {
+  return date.toString().padStart(2, "0");
+}
+
+// フォーマットされた日付の生成
+const formatDate = (date) => {
+  const formatted = date.getFullYear() + "-" + 
+  zeroPadding((date.getMonth() + 1)) + "-" + 
+  zeroPadding(date.getDate()) + "&nbsp;" + 
+  zeroPadding(date.getHours()) + ":" + 
+  zeroPadding(date.getMinutes()) + ":" + 
+  zeroPadding(date.getSeconds());
+  return formatted;
+}
 
 // ログの生成
 const newState = (value) => {
-  const element = document.getElementById('history')
-  const li = document.createElement('li')
+  const element = document.getElementById("history");
+  const li = document.createElement("li");
 
   // 日付のフォーマット
   const date = new Date(value.createdAt);
-
-  // ゼロ埋め
-  const zeroPadding = (date) => {
-    return date.toString().padStart(2, "0")
-  }
-
-  // フォーマットされた日付の生成
-  const formatDate = (date)=>{
-    const formatted = date.getFullYear() + "-" + 
-    zeroPadding((date.getMonth() + 1)) + "-" + 
-    zeroPadding(date.getDate()) + "&nbsp;" + 
-    zeroPadding(date.getHours()) + ":" + 
-    zeroPadding(date.getMinutes()) + ":" + 
-    zeroPadding(date.getSeconds());
-    return formatted;
-  }
 
   // HTMLの追加
   li.innerHTML = `
@@ -35,11 +35,11 @@ const newState = (value) => {
       </div>
     </div>
   `
-  element.prepend(li)
+  element.prepend(li);
 }
 
 // データの受け取ったとき
-socket.on('event', function(status){
+socket.on("event", status => {
   // 最新の状態を入れる用
   let latest
 
@@ -56,8 +56,8 @@ socket.on('event', function(status){
     newState(status)
   }
 
-  // 南京錠の画像変更
-  document.getElementById('status').innerHTML = latest ?
-  '<img src="/images/unlock" alt="開いている時のアイコン" width="300" height="380" />' :
-  '<img src="/images/lock" alt="閉まっている時のアイコン" width="300" height="380" />'
+  // 最新の状態の画像に変更
+  document.getElementById("status").innerHTML = latest ?
+  "<img src='/images/unlock' alt='開いている時のアイコン' width='300' height='380' />" :
+  "<img src='/images/lock' alt='閉まっている時のアイコン' width='300' height='380' />"
 })

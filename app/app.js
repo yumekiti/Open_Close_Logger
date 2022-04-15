@@ -2,8 +2,9 @@
 const express = require("express");
 const app = express();
 const http = require("http").Server(app);
-const io = require("socket.io")(http);              // 双方向通信
-const { PrismaClient } = require("@prisma/client"); // データベース関連
+const io = require("socket.io")(http);
+// データベース関連
+import { PrismaClient } from "@prisma/client"; 
 const prisma = new PrismaClient();
 
 // サーバーポートの指定
@@ -18,30 +19,30 @@ app.use(
 );
 
 // HTMLを返す
-app.get("/", function (req, res) {
+app.get("/", res => {
   res.sendFile(__dirname + "/index.html");
 });
 
 // CSSを返す
-app.get("/style.css", function (req, res) {
+app.get("/style.css", res => {
   res.sendFile(__dirname + "/style.css");
 });
 
 // client.jsを返す
-app.get("/client.js", function (req, res) {
+app.get("/client.js", res => {
   res.sendFile(__dirname + "/client.js");
 });
 
-// 画像取得用
-app.get("/images/lock", function (req, res) {
+// 画像を返す
+app.get("/images/lock", res => {
   res.sendFile(__dirname + "/images/lock.png");
 });
-app.get("/images/unlock", function (req, res) {
+app.get("/images/unlock", res => {
   res.sendFile(__dirname + "/images/unlock.png");
 });
 
-// 情報の受け取り・データの変更
-app.post("/", async function (req, res) {
+// 情報の受け取り、データの変更
+app.post("/", async (req, res) => {
 
   // 新しい状態データの作成
   const newState = await prisma.status.create({
@@ -54,23 +55,23 @@ app.post("/", async function (req, res) {
   io.emit("event", newState);
 
   // 変更があったことを知らせる
-  res.send("status update!!");
+  res.send("status update !");
 });
 
-// 双方向通信接続
-io.on("connection", async function (socket) {
+// 双方向通信開始
+io.on("connection", async socket => {
   // 状態データの取得
   const status = await prisma.status.findMany();
   // 状態データに値があれば送信
   if (status.length !== 0) socket.emit("event", status);
 
   // 受信しクライアントに送信
-  socket.on("event", function (status) {
+  socket.on("event", (status) => {
     io.emit("event", status);
   });
 });
 
 // サーバーの実行
-http.listen(PORT, function () {
+http.listen(PORT, () => {
   console.log("server listening. Port:" + PORT);
 });
