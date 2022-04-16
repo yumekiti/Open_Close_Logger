@@ -39,7 +39,7 @@ const newState = (value) => {
 }
 
 // データの受け取ったとき
-socket.on("event", status => {
+socket.on("event", (status) => {
   // 最新の状態を入れる用
   let latest
 

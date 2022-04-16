@@ -19,25 +19,25 @@ app.use(
 );
 
 // HTMLを返す
-app.get("/", res => {
+app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
 
 // CSSを返す
-app.get("/style.css", res => {
+app.get("/style.css", (req, res) => {
   res.sendFile(__dirname + "/style.css");
 });
 
 // client.jsを返す
-app.get("/client.js", res => {
+app.get("/client.js", (req, res) => {
   res.sendFile(__dirname + "/client.js");
 });
 
 // 画像を返す
-app.get("/images/lock", res => {
+app.get("/images/lock", (req, res) => {
   res.sendFile(__dirname + "/images/lock.png");
 });
-app.get("/images/unlock", res => {
+app.get("/images/unlock", (req, res) => {
   res.sendFile(__dirname + "/images/unlock.png");
 });
 
@@ -59,7 +59,7 @@ app.post("/", async (req, res) => {
 });
 
 // 双方向通信開始
-io.on("connection", async socket => {
+io.on("connection", async (socket) => {
   // 状態データの取得
   const status = await prisma.status.findMany();
   // 状態データに値があれば送信
