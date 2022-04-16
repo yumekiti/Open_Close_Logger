@@ -4,7 +4,7 @@ const app = express();
 const http = require("http").Server(app);
 const io = require("socket.io")(http);
 // データベース関連
-import { PrismaClient } from "@prisma/client"; 
+const { PrismaClient } = require("@prisma/client"); 
 const prisma = new PrismaClient();
 
 // サーバーポートの指定
