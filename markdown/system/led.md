@@ -1,4 +1,4 @@
-## LEDを光らしてみよう
+## [LEDを光らしてみよう](./../front-end.md)
 
 /python/led.py
 ```python

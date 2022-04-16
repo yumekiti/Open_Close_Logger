@@ -1,4 +1,4 @@
-## main.pyをpicoに書き込んでみよう
+## [main.pyをpicoに書き込んでみよう](./../front-end.md)
 実行してうまく動作していたら書き込んでみよう。
 
 /python/main.py
@@ -8,12 +8,10 @@ from machine import Pin
 
 # 宣言
 sw = Pin(15, Pin.IN, Pin.PULL_UP)
-led = Pin(25, Pin.OUT)
 
 # 変数の初期化
 status = sw.value()
 lock = 0
-led.value(status)
 
 while True:
 
@@ -24,8 +22,6 @@ while True:
   if status != lock:
     # 状態を表示
     print(status)
-    # 状態 True なら光らせる
-    led.value(status)
 
   lock = status
 
