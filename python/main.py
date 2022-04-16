@@ -7,7 +7,7 @@ led = Pin(25, Pin.OUT)
 
 # 変数の初期化
 status = sw.value()
-lock = False
+lock = 0
 led.value(status)
 
 while True:

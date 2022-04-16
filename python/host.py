@@ -16,8 +16,8 @@ headers = {
 }
 
 # 初期化
-status = False
-lock = False
+status = 0
+lock = 0
 
 try:
   while True:
