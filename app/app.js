@@ -44,7 +44,6 @@ app.get("/images/unlock", (req, res) => {
 // 情報の受け取り、データの変更
 app.post("/", async (req, res) => {
 
-  console.log(typeof(JSON.parse(req.body?.status)))
   // 新しい状態データの作成
   const newState = await prisma.status.create({
     data: {
