@@ -23,17 +23,19 @@ try:
   while True:
 
     # 状態の取得
-    status = ser.readline().decode('UTF-8')
+    status = ser.read_all().decode('UTF-8').rstrip('\n').rstrip('\r')
 
-    # 変更があれば
-    if status != lock:
-      payload='status=' + status
-      # POST リクエスト
-      response = requests.request("POST", url, headers=headers, data=payload)
-      print(response.text)
+    if(status):
 
-    lock = status
-    print(status)
+      # 変更があれば
+      if status != lock:
+        payload='status=' + status
+        # POST リクエスト
+        response = requests.request("POST", url, headers=headers, data=payload)
+        print(response.text)
+
+      lock = status
+      print(status)
 
 except:
   print('program end')

@@ -47,7 +47,7 @@ app.post("/", async (req, res) => {
   // 新しい状態データの作成
   const newState = await prisma.status.create({
     data: {
-      body: Boolean(JSON.parse(req.body?.status)),
+      body: JSON.parse(Boolean(Number(req.body?.status))),
     },
   });
 
