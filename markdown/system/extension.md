@@ -1,5 +1,5 @@
 ## [余裕があれば](./../front-end.md)
-余裕がある人は状態によってLEDを光らせてみよう。
+状態によってLEDを光らせてみよう。
 
 /python/main.py
 ```python
