@@ -1,6 +1,7 @@
 ## CSS, client.js, 画像を返してみよう
 やり方はHTMLと同じなので考えてコーディングしてみよう
 
+/app/app.js
 ```js
 // HTMLを返す
 app.get("/", (req, res) => {
