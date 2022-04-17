@@ -6,4 +6,4 @@ OpenCloseLogger (mini)
 ## [フロントエンド開発](./markdown/front-end.md)
 
 # python
-## [ソフトウェア開発](./markdown/software.md)
+## [ソフトウェア開発](./markdown/system.md)
