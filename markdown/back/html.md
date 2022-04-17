@@ -18,3 +18,5 @@ app.get("/", (req, res) => {
 
 http://localhost:8080
 
+### 参考リンク
+- https://jsprimer.net/use-case/ajaxapp/entrypoint/
