@@ -63,7 +63,7 @@ io.on("connection", async (socket) => {
   // 状態データの取得
   const status = await prisma.status.findMany();
   // 状態データに値があれば送信
-  if (status.length !== 0) io.emit("event", status);
+  if (status.length !== 0) socket.emit("event", status);
 });
 
 // サーバーの実行
