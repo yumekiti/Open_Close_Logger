@@ -36,8 +36,8 @@ migrate:
 
 .PHONY: open
 open:
-	python3 ./python/test.py true
+	python3 ./python/test.py 1
 
 .PHONY: close
 close:
-	python3 ./python/test.py false
+	python3 ./python/test.py 0
