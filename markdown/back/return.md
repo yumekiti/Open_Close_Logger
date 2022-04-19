@@ -1,6 +1,14 @@
 ## [CSS, client.js, 画像を返してみよう](./../back-end.md)
 やり方はHTMLと同じなので考えてコーディングしてみよう
 
+- CSS
+  - /style.css
+- JavaScript
+  - /client.js
+- 画像
+  - /images/lock.png
+  - /images/unlock.png
+
 /app/app.js
 ```js
 // HTMLを返す
@@ -30,7 +38,7 @@ app.get("/images/unlock", (req, res) => {
 });
 
 // サーバーの実行
-http.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log("server listening. Port:" + PORT);
 });
 ```
