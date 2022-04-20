@@ -1,8 +1,13 @@
+# __pycache__ 生成させない
+import sys
+sys.dont_write_bytecode = True
+
 import serial
 import requests
+import search
 
 # 変更
-COM="COM3"
+COM=search.usb()
 bitRate=9600
 
 # シリアル通信
