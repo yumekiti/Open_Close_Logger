@@ -42,6 +42,9 @@ try:
       lock = status
       print(status)
 
-except:
+except Exception as err:
+  print(err)
+
+finally:
   print('program end')
   ser.close()

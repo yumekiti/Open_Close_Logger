@@ -1,0 +1,2 @@
+python host.py &
+pause
