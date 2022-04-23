@@ -8,7 +8,9 @@ const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./database.db');
 
 db.serialize(() => {
+  // テーブルがあれば削除
   db.run("DROP TABLE IF EXISTS status");
+  // テーブルの作成
   db.run(`CREATE TABLE IF NOT EXISTS status (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     body BOOLEAN,
@@ -52,6 +54,7 @@ app.get("/images/unlock", (req, res) => {
 
 // 情報の受け取り、データの変更
 app.post("/", (req, res) => {
+  // 状態を取得
   const status = JSON.parse(Boolean(Number(req.body?.status)))
   
   // 新しい状態データの作成
