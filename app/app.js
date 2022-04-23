@@ -4,8 +4,28 @@ const app = express();
 const http = require("http").Server(app);
 const io = require("socket.io")(http);
 // データベース関連
-const { PrismaClient } = require("@prisma/client"); 
-const prisma = new PrismaClient();
+const sqlite3 = require('sqlite3').verbose();
+const db = new sqlite3.Database('./database.db');
+
+db.serialize(() => {
+  db.run("DROP TABLE IF EXISTS status");
+  db.run(`CREATE TABLE IF NOT EXISTS status (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    body BOOLEAN,
+    created_at TIMESTAMP DEFAULT(DATETIME('now','localtime'))
+  )`)
+  const stmt = db.prepare('insert into status(body) VALUES (?)')
+
+  for (let i = 0; i < 10; i++) {
+    stmt.run(true)
+  }
+
+  stmt.finalize()
+
+  db.each('SELECT * FROM status', (err, row) => {
+    console.log(`${row.id}: ${row.body}: ${row.created_at}`)
+  })
+})
 
 // サーバーポートの指定
 const PORT = process.env.PORT || 8080;
@@ -45,11 +65,9 @@ app.get("/images/unlock", (req, res) => {
 app.post("/", async (req, res) => {
 
   // 新しい状態データの作成
-  const newState = await prisma.status.create({
-    data: {
-      body: JSON.parse(Boolean(Number(req.body?.status))),
-    },
-  });
+  const newState = await db.run(
+    'insert into post (title, content, createdtime) values (?, ?, ?)',
+  );
 
   // 状態データの送信
   io.emit("event", newState);
@@ -61,7 +79,7 @@ app.post("/", async (req, res) => {
 // 双方向通信開始
 io.on("connection", async (socket) => {
   // 状態データの取得
-  const status = await prisma.status.findMany();
+  const status = []
   // 状態データに値があれば送信
   if (status.length !== 0) socket.emit("event", status);
 });
@@ -69,4 +87,4 @@ io.on("connection", async (socket) => {
 // サーバーの実行
 http.listen(PORT, () => {
   console.log("server listening. Port:" + PORT);
-});
+}); 

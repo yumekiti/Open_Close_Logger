@@ -12,8 +12,7 @@ services:
           sh -c "
             npm install -g nodemon &&
             npm install &&
-            nodemon app &&
-            touch ./dev.db && chmod 777 ./dev.db
+            nodemon app
           "
         tty: true
         ports:

@@ -10,8 +10,7 @@ down:
 
 .PHONY: restart
 restart:
-	@make down
-	@make up
+	$(dc) restart
 
 .PHONY: reup
 reup:
@@ -29,10 +28,6 @@ logs:
 .PHONY: app
 app:
 	$(dc) exec express /bin/sh
-
-.PHONY: migrate
-migrate:
-	$(dc) exec express /bin/sh -c "npx prisma migrate dev --name init"
 
 .PHONY: open
 open:
