@@ -24,6 +24,8 @@ headers = {
 status = 0
 lock = 0
 
+print('Ready')
+
 try:
   while True:
 
