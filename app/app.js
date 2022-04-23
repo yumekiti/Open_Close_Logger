@@ -5,7 +5,7 @@ const http = require("http").Server(app);
 const io = require("socket.io")(http);
 // データベース関連
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./database.db');
+const db = new sqlite3.Database(__dirname + './database.db');
 
 db.serialize(() => {
   // テーブルがあれば削除
