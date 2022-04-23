@@ -14,17 +14,6 @@ db.serialize(() => {
     body BOOLEAN,
     created_at TIMESTAMP DEFAULT(DATETIME('now','localtime'))
   )`)
-  const stmt = db.prepare('insert into status(body) VALUES (?)')
-
-  for (let i = 0; i < 10; i++) {
-    stmt.run(true)
-  }
-
-  stmt.finalize()
-
-  db.each('SELECT * FROM status', (err, row) => {
-    console.log(`${row.id}: ${row.body}: ${row.created_at}`)
-  })
 })
 
 // サーバーポートの指定
@@ -62,26 +51,31 @@ app.get("/images/unlock", (req, res) => {
 });
 
 // 情報の受け取り、データの変更
-app.post("/", async (req, res) => {
-
+app.post("/", (req, res) => {
+  const status = JSON.parse(Boolean(Number(req.body?.status)))
+  
   // 新しい状態データの作成
-  const newState = await db.run(
-    'insert into post (title, content, createdtime) values (?, ?, ?)',
-  );
+  const stmt = db.prepare('INSERT INTO status(body) VALUES (?)')
+  stmt.run(status)
+  stmt.finalize()
 
   // 状態データの送信
-  io.emit("event", newState);
+  db.all('SELECT * FROM status WHERE id = last_insert_rowid()', (err, data) => {
+    console.log(data);
+    io.emit("event", data);
+  })
 
   // 変更があったことを知らせる
   res.send("status update !");
 });
 
 // 双方向通信開始
-io.on("connection", async (socket) => {
+io.on("connection", (socket) => {
   // 状態データの取得
-  const status = []
-  // 状態データに値があれば送信
-  if (status.length !== 0) socket.emit("event", status);
+  db.all("SELECT * FROM status", (err, data) => {
+    // 状態データに値があれば送信
+    if (data.length !== 0) socket.emit("event", data);
+  })
 });
 
 // サーバーの実行

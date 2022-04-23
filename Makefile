@@ -31,8 +31,8 @@ app:
 
 .PHONY: open
 open:
-	python3 ./python/test.py 1
+	python3 ./python/host/test.py 1
 
 .PHONY: close
 close:
-	python3 ./python/test.py 0
+	python3 ./python/host/test.py 0

@@ -23,7 +23,7 @@ const newState = (value) => {
   const li = document.createElement("li");
 
   // 日付のフォーマット
-  const date = new Date(value.createdAt);
+  const date = new Date(value.created_at);
 
   // HTMLの追加
   li.innerHTML = `
