@@ -61,7 +61,6 @@ app.post("/", (req, res) => {
 
   // 状態データの送信
   db.all('SELECT * FROM status WHERE id = last_insert_rowid()', (err, data) => {
-    console.log(data);
     io.emit("event", data);
   })
 
