@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./markdown/image/icon.png" width="100" alt="Logo" />
+  <img src="./markdown/images/icon.png" width="160" alt="Logo" />
 </p>
 
 OpenCloseLogger (mini)
