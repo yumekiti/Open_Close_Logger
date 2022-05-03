@@ -1,4 +1,4 @@
-dc := user=$(USER) docker-compose
+dc := docker-compose -f ./docker-compose.yml
 
 .PHONY: up
 up:
