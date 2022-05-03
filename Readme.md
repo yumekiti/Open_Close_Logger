@@ -28,7 +28,7 @@ OpenCloseLogger (mini)
 バックエンドからフロントエンドを動かしているので<br>
 まずはバックエンドから開発していきましょう！
 
-## [バックエンド開発へ（ここをクリック）](./markdown/back-end.md)
+## [バックエンド開発](./markdown/back-end.md)
 
 ---
 
@@ -36,7 +36,7 @@ OpenCloseLogger (mini)
 
 バックエンドができたら次はフロントエンド開発しよう！
 
-## [フロントエンド開発（ここをクリック）](./markdown/front-end.md)
+## [フロントエンド開発](./markdown/front-end.md)
 
 ---
 
@@ -44,7 +44,7 @@ OpenCloseLogger (mini)
 
 最後にセンサーを反映できるようにしよう！
 
-## [組み込みシステム開発（ここをクリック）](./markdown/system.md)
+## [組み込みシステム開発](./markdown/system.md)
 
 ---
 
