@@ -76,17 +76,10 @@ $ make up
 
 # Node.js
 
-## パッケージインストール
-
 ```sh=
 $ cd app
 $ npm install
-```
-
-## 起動
-
-```sh=
-$ node ./app/app.js
+$ node ./app.js
 ```
 
 ## EXE
