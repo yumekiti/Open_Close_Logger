@@ -29,28 +29,8 @@ app.use(
   })
 );
 
-// HTMLを返す
-app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
-});
-
-// CSSを返す
-app.get("/style.css", (req, res) => {
-  res.sendFile(__dirname + "/style.css");
-});
-
-// client.jsを返す
-app.get("/client.js", (req, res) => {
-  res.sendFile(__dirname + "/client.js");
-});
-
-// 画像を返す
-app.get("/images/lock", (req, res) => {
-  res.sendFile(__dirname + "/images/lock.png");
-});
-app.get("/images/unlock", (req, res) => {
-  res.sendFile(__dirname + "/images/unlock.png");
-});
+// publicを返す
+app.use('/', express.static('public'));
 
 // 情報の受け取り、データの変更
 app.post("/", (req, res) => {

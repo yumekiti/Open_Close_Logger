@@ -58,6 +58,6 @@ socket.on("event", (status) => {
 
   // 最新の状態の画像に変更
   document.getElementById("status").innerHTML = latest ?
-  "<img src='/images/unlock' alt='開いている時のアイコン' width='300' height='380' />" :
-  "<img src='/images/lock' alt='閉まっている時のアイコン' width='300' height='380' />"
+  "<img src='/images/unlock.png' alt='開いている時のアイコン' width='300' height='380' />" :
+  "<img src='/images/lock.png' alt='閉まっている時のアイコン' width='300' height='380' />"
 })
