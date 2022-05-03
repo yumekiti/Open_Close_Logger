@@ -10,8 +10,9 @@ services:
     working_dir: /app
     command: >
       sh -c "
+        npm install -g nodemon &&
         npm install &&
-        node app
+        nodemon app
       "
     tty: true
     ports:
