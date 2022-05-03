@@ -1,7 +1,15 @@
+<p align="center">
+  <img src="./markdown/image/icon.png" width="100" alt="Logo" />
+</p>
+
 OpenCloseLogger (mini)
 ===
 
-[![GitHub license](https://img.shields.io/github/license/chainer/chainer.svg)](https://licenses.opensource.jp/MIT/MIT.html)
+[![github license](https://shields.io/github/license/yumekiti/OC_Trial_Lesson)](https://licenses.opensource.jp/MIT/MIT.html)
+![npm version](https://img.shields.io/node/v/express?style=flat)
+![pypi version](https://img.shields.io/pypi/v/pyserial.svg?style=flat)
+![github languages](https://shields.io/github/languages/count/yumekiti/OC_Trial_Lesson)
+![github downloads](https://shields.io/github/downloads/yumekiti/OC_Trial_Lesson/total)
 
 <br>
 
@@ -81,6 +89,8 @@ $ node app
 ```sh
 $ ./*.exe
 ```
+
+<br><br><br>
 
 # 制作者
 
