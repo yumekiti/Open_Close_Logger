@@ -5,7 +5,7 @@ const http = require("http").Server(app);
 const io = require("socket.io")(http);
 // データベース関連
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database(__dirname + './database.db');
+const db = new sqlite3.Database('./app/database.db');
 
 db.serialize(() => {
   // テーブルがあれば削除
@@ -55,7 +55,7 @@ app.get("/images/unlock", (req, res) => {
 // 情報の受け取り、データの変更
 app.post("/", (req, res) => {
   // 状態を取得
-  const status = JSON.parse(Boolean(Number(req.body?.status)))
+  const status = JSON.parse(Boolean(Number(req.body.status)))
   
   // 新しい状態データの作成
   const stmt = db.prepare('INSERT INTO status(body) VALUES (?)')
