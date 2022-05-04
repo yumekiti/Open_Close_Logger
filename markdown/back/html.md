@@ -1,12 +1,37 @@
-## [HTMLを返してみよう](./../back-end.md)
+### [戻る](./../back-end.md)
+
+# HTMLを表示してみよう
+
+HTML (Hypertext Markup Language、ハイパーテキスト・マークアップ・ランゲージ)は、ウェブサイトのコンテンツの構造を作るために使うコードです。
+
+<br>
 
 /app/app.js
 ```diff
-// HTMLを返す
-app.get("/", (req, res) => {
-+  res.sendFile(__dirname + "/index.html");
--  res.send("Hello, World !");
-});
++ // publicを返す
++ app.use('/', express.static('public'));
+-  // Hello, World! を返す
+- app.get("/", (req, res) => {
+-   res.send("Hello, World!");
+- });
+```
+
+/app/app.js
+```js
+// モジュール読み込み
+const express = require("express");
+const app = express();
+
+// サーバーポートの指定
+const PORT = process.env.PORT || 8080;
+
+// publicを返す
+app.use('/', express.static('public'));
+
+// サーバーの実行
+app.listen(PORT, () => {
+  console.log("server listening. Port:" + PORT);
+}); 
 ```
 
 /app/index.html
@@ -14,9 +39,23 @@ app.get("/", (req, res) => {
 <h1>Hello, World!!</h1>
 ```
 
-以下リンクに`Hello, World!!`と表示される
+<br><br>
 
-http://localhost:8080
+# 課題
+
+- 下記リンクに `Hello, World!!` と表示されるか、確認する
+- `Hello, World!` の部分を変更して反映されるか確認する
+- 好きな `HTML` を書いてみてみる
+
+<br>
+
+## http://localhost:8080
+
+---
+
+<br><br>
 
 ### 参考リンク
-- https://jsprimer.net/use-case/nodecli/read-file/#use-readFile
+
+- https://expressjs.com/ja/starter/static-files.html
+- https://developer.mozilla.org/ja/docs/Learn/Getting_started_with_the_web/HTML_basics

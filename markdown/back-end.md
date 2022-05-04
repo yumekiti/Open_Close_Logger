@@ -6,7 +6,7 @@
 
 1. [Expressを動かしてみよう](./back/tutorial.md)
 
-1. [HTMLを返してみよう](./back/html.md)
+1. [HTMLを表示してみよう](./back/html.md)
 
 1. [CSS, client.js, 画像を返してみよう](./back/return.md)
 

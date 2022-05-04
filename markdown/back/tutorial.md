@@ -28,14 +28,14 @@ app.listen(PORT, () => {
 
 <br><br>
 
-## 課題
+# 課題
 
 - 下記リンクに `Hello, World!` と表示されるか、確認する
 - `Hello, World!` の部分を変更して反映されるか確認する
 
 <br>
 
-### http://localhost:8080
+## http://localhost:8080
 
 ---
 
