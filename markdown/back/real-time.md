@@ -1,7 +1,10 @@
 ### [戻る](./../back-end.md)
 
-## リアルタイム処理
-[Socket.IO](https://socket.io/) と言うライブラリを使用してリアルタイム処理を実装する
+# リアルタイム処理
+
+[Socket.IO](https://socket.io/) というライブラリを使用してリアルタイム処理を実装する
+
+<br>
 
 /app/app.js
 ```js
@@ -11,8 +14,19 @@ const app = express();
 const http = require("http").Server(app);
 const io = require("socket.io")(http);
 // データベース関連
-const { PrismaClient } = require("@prisma/client"); 
-const prisma = new PrismaClient();
+const sqlite3 = require('sqlite3').verbose();
+const db = new sqlite3.Database('./database.db');
+
+db.serialize(() => {
+  // テーブルがあれば削除
+  db.run("DROP TABLE IF EXISTS status");
+  // テーブルの作成
+  db.run(`CREATE TABLE IF NOT EXISTS status (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    body BOOLEAN,
+    created_at TIMESTAMP DEFAULT(DATETIME('now','localtime'))
+  )`)
+})
 
 // サーバーポートの指定
 const PORT = process.env.PORT || 8080;
@@ -25,59 +39,44 @@ app.use(
   })
 );
 
-// HTMLを返す
-app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/index.html");
-});
-
-// CSSを返す
-app.get("/style.css", (req, res) => {
-  res.sendFile(__dirname + "/style.css");
-});
-
-// client.jsを返す
-app.get("/client.js", (req, res) => {
-  res.sendFile(__dirname + "/client.js");
-});
-
-// 画像を返す
-app.get("/images/lock", (req, res) => {
-  res.sendFile(__dirname + "/images/lock.png");
-});
-app.get("/images/unlock", (req, res) => {
-  res.sendFile(__dirname + "/images/unlock.png");
-});
+// publicを返す
+app.use('/', express.static('public'));
 
 // 情報の受け取り、データの変更
-app.post("/", async (req, res) => {
-
+app.post("/", (req, res) => {
+  // 状態を取得
+  const status = JSON.parse(Boolean(Number(req.body.status)))
+  
   // 新しい状態データの作成
-  const newState = await prisma.status.create({
-    data: {
-      body: JSON.parse(Boolean(Number(req.body?.status))),
-    },
-  });
+  const stmt = db.prepare('INSERT INTO status(body) VALUES (?)')
+  stmt.run(status)
+  stmt.finalize()
 
   // 状態データの送信
-  io.emit("event", newState);
+  db.all('SELECT * FROM status WHERE id = last_insert_rowid()', (err, data) => {
+    io.emit("event", data);
+  })
 
   // 変更があったことを知らせる
   res.send("status update !");
 });
 
 // 双方向通信開始
-io.on("connection", async (socket) => {
+io.on("connection", (socket) => {
   // 状態データの取得
-  const status = await prisma.status.findMany();
-  // 状態データに値があれば送信
-  if (status.length !== 0) socket.emit("event", status);
+  db.all("SELECT * FROM status", (err, data) => {
+    // 状態データに値があれば送信
+    if (data.length !== 0) socket.emit("event", data);
+  })
 });
 
 // サーバーの実行
 http.listen(PORT, () => {
   console.log("server listening. Port:" + PORT);
-});
+}); 
 ```
+
+<br><br>
 
 ### 参考リンク
 - https://socket.io/get-started/chat

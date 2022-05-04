@@ -8,8 +8,6 @@
 
 1. [HTMLを表示してみよう](./back/html.md)
 
-1. [CSS, client.js, 画像を返してみよう](./back/return.md)
-
 1. [リアルタイム処理](./back/real-time.md)
 
 ### 参考リンク
