@@ -50,22 +50,6 @@ OpenCloseLogger (mini)
 
 <br><br><br>
 
-# 開発環境
-
-- Node.js
-  - https://nodejs.org/ja/
-- Python
-  - https://www.python.org/
-- Visual Studio Code
-  - https://azure.microsoft.com/ja-jp/products/visual-studio-code/
-
-# 使用デバイス
-
-- Raspberry Pi Pico
-  - https://www.raspberrypi.com/products/raspberry-pi-pico/
-
-<br><br><br>
-
 # 使い方
 
 ## Docker
@@ -89,6 +73,22 @@ $ node ./app.js
 ```sh
 $ ./*.exe
 ```
+
+<br><br><br>
+
+# 開発環境
+
+- Node.js
+  - https://nodejs.org/ja/
+- Python
+  - https://www.python.org/
+- Visual Studio Code
+  - https://azure.microsoft.com/ja-jp/products/visual-studio-code/
+
+# 使用デバイス
+
+- Raspberry Pi Pico
+  - https://www.raspberrypi.com/products/raspberry-pi-pico/
 
 <br><br><br>
 
