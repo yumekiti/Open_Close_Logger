@@ -50,13 +50,13 @@ OpenCloseLogger (mini)：開閉状態管理アプリ
 
 ## Docker
 
-```sh=
+```sh
 $ make up
 ```
 
 ## Node.js
 
-```sh=
+```sh
 $ cd app
 $ npm install
 $ node ./app.js
@@ -72,12 +72,12 @@ $ ./*.exe
 
 ## Python
 
-```sh=
+```sh
 # packages install
 $ pip install pyserial requests
 ```
 
-```sh=
+```sh
 $ python ./python/host/main.py
 ```
 
