@@ -2,7 +2,7 @@
   <img src="./markdown/images/icon.png" width="160" alt="Logo" />
 </p>
 
-OpenCloseLogger (mini)：開閉状態管理Webアプリ
+OpenCloseLogger (mini)：開閉状態管理アプリ
 ===
 
 [![github license](https://shields.io/github/license/yumekiti/OC_Trial_Lesson)](https://licenses.opensource.jp/MIT/MIT.html)
