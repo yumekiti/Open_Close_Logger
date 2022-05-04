@@ -74,6 +74,17 @@ $ node ./app.js
 $ ./*.exe
 ```
 
+## Python
+
+```sh=
+# packages install
+$ pip install pyserial requests
+```
+
+```sh=
+$ python ./python/host/main.py
+```
+
 <br><br><br>
 
 # 開発環境
