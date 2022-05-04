@@ -2,7 +2,7 @@
   <img src="./markdown/images/icon.png" width="160" alt="Logo" />
 </p>
 
-OpenCloseLogger (mini)
+OpenCloseLogger (mini)：開閉状態管理Webアプリ
 ===
 
 [![github license](https://shields.io/github/license/yumekiti/OC_Trial_Lesson)](https://licenses.opensource.jp/MIT/MIT.html)
@@ -13,15 +13,11 @@ OpenCloseLogger (mini)
 
 <br>
 
-# 概要
-
-開閉状態管理アプリケーションです。
-
 # 仕組み
 
 シリアル通信で開閉状態の情報を受け取り表示しています。
 
-<br><br><br>
+<br><br>
 
 # 開発手順
 
@@ -48,7 +44,7 @@ OpenCloseLogger (mini)
 
 ---
 
-<br><br><br>
+<br><br>
 
 # 使い方
 
@@ -85,7 +81,7 @@ $ pip install pyserial requests
 $ python ./python/host/main.py
 ```
 
-<br><br><br>
+<br><br>
 
 # 開発環境
 
@@ -101,7 +97,7 @@ $ python ./python/host/main.py
 - Raspberry Pi Pico
   - https://www.raspberrypi.com/products/raspberry-pi-pico/
 
-<br><br><br>
+<br><br>
 
 # 制作者
 
