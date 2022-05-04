@@ -34,7 +34,7 @@ app.listen(PORT, () => {
 }); 
 ```
 
-/app/index.html
+/app/public/index.html
 ```html
 <h1>Hello, World!!</h1>
 ```
