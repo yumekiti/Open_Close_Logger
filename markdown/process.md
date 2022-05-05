@@ -3,6 +3,8 @@
 ## 開発手法を考える
 今回は`ウォーターフォール開発`で開発する
 
+<br><br>
+
 # 手順
 
 ## [要件定義](./development/requirements.md)
