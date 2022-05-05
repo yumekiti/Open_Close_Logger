@@ -21,12 +21,12 @@ app.get("/hello", (req, res) => {
 });
 
 // publicを返す
-app.use('/', express.static('public'));
+app.use("/", express.static("public"));
 
 // サーバーの実行
 app.listen(PORT, () => {
   console.log("server listening. Port:" + PORT);
-}); 
+});
 ```
 
 /app/public/index.html

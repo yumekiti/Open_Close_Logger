@@ -23,7 +23,7 @@ app.get("/hello", (req, res) => {
 // サーバーの実行
 app.listen(PORT, () => {
   console.log("server listening. Port:" + PORT);
-}); 
+});
 ```
 
 <br><br>
