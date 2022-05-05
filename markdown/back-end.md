@@ -8,6 +8,8 @@
 
 1. [HTMLを表示してみよう](./back/html.md)
 
+1. [SQLiteを使いデータを登録してみよう](./back/database.md)
+
 1. [リアルタイム処理](./back/real-time.md)
 
 ### 参考リンク
