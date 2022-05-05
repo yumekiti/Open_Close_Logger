@@ -1,6 +1,8 @@
 // モジュール読み込み
 const express = require("express");
 const app = express();
+const http = require("http").Server(app);
+const io = require("socket.io")(http);
 // データベース関連
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./database.db');
@@ -30,9 +32,18 @@ app.use(
 // publicを返す
 app.use('/', express.static('public'));
 
+// 状態データの取得
+app.get("/data", (req, res) => {
+  // 状態データの取得
+  db.all("SELECT * FROM status", (err, data) => {
+    // 状態データに値があれば送信
+    if (data.length !== 0) res.send(JSON.stringify(data));
+    else res.send(['No data']);
+  })
+});
+
 // 情報の受け取り、データの変更
 app.post("/", (req, res) => {
-  console.log(req.body);
   // 状態を取得
   const status = JSON.parse(Boolean(Number(req.body.status)))
   
@@ -45,20 +56,20 @@ app.post("/", (req, res) => {
   db.all('SELECT * FROM status WHERE id = last_insert_rowid()', (err, data) => {
     // 変更があったことを知らせる
     res.send(data);
+    io.emit("event", data);
   })
 });
 
-// 状態データの取得
-app.get("/data", (req, res) => {
+// 双方向通信開始
+io.on("connection", (socket) => {
   // 状態データの取得
   db.all("SELECT * FROM status", (err, data) => {
     // 状態データに値があれば送信
-    if (data.length !== 0) res.send(JSON.stringify(data));
-    else res.send(['No data']);
+    if (data.length !== 0) socket.emit("event", data);
   })
 });
 
 // サーバーの実行
-app.listen(PORT, () => {
+http.listen(PORT, () => {
   console.log("server listening. Port:" + PORT);
 });
