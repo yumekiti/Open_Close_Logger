@@ -1,69 +1,98 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <title>OC_trial_Lesson</title>
-  <meta charset="utf-8">
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="/js/client.js"></script>
-  <link rel="stylesheet" type="text/css" href="/css/style.css">
-</head>
-<body>
-  <header>
-    <div class="icon">
-      <img src="images/logo.svg" width="150" height="28" alt="icon" />
-    </div>
-  </header>
-
-  <div class="grid">
-    <div class="left">
-      <div class="card-fit">
-        <div class="title">
-          <img src="images/clock.svg" width="24" height="24" alt="clock" />
-          <h1>現在時刻</h1>
-        </div>
+  <head>
+    <title>OC_trial_Lesson</title>
+    <meta charset="utf-8" />
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/client.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="icon">
+        <img src="images/logo.svg" width="150" height="28" alt="icon" />
       </div>
-      
-      <div class="card">
-        <div class="now">
-          <h1 class="date">2020/04/19</h1>
-          <h1 class="time">09:03:34</h1>
-        </div>
-      </div>
+    </header>
 
-      <div class="position-title">
+    <div class="grid">
+      <div class="left">
         <div class="card-fit">
           <div class="title">
-            <img src="images/building.svg" width="24" height="24" alt="building" />
-            <h1>設置場所</h1>
+            <img src="images/clock.svg" width="24" height="24" alt="clock" />
+            <h1>現在時刻</h1>
           </div>
         </div>
-      </div>
 
-      <div class="status">
-        <div class="card-fit">
-          <div class="status-image">
-            <img src="images/open.svg" width="122" height="136" alt="building" />
-          </div>
-        </div>
-      </div>
-
-      <div class="position">
         <div class="card">
-          <div>
-            <h1 class="name">2号館4階&nbsp;2404教室</h1>
-            <h1 class="category">ドア</h1>
+          <div class="now">
+            <h1 class="date">2020/04/19</h1>
+            <h1 class="time">09:03:34</h1>
+          </div>
+        </div>
+
+        <div class="position-title">
+          <div class="card-fit">
+            <div class="title">
+              <img
+                src="images/building.svg"
+                width="24"
+                height="24"
+                alt="building"
+              />
+              <h1>設置場所</h1>
+            </div>
+          </div>
+        </div>
+
+        <div class="status">
+          <div class="card-fit">
+            <div class="status-image">
+              <img src="images/open.svg" width="122" height="136" alt="open" />
+            </div>
+          </div>
+        </div>
+
+        <div class="position">
+          <div class="card">
+            <div>
+              <h1 class="name">2号館4階&nbsp;2404教室</h1>
+              <h1 class="category">ドア</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="history-title">
+          <div class="card-fit">
+            <div class="title">
+              <img
+                src="images/history.svg"
+                width="24"
+                height="24"
+                alt="clock"
+              />
+              <h1>開閉履歴</h1>
+            </div>
+          </div>
+        </div>
+
+        <div class="history">
+          <div class="card">
+            <div class="history-date">
+              <p class="date">2020/04/19</p>
+              <p class="time">09:03:34</p>
+            </div>
+            <div class="history-position">
+              <h1>2号館4階&nbsp;2404教室</h1>
+            </div>
+            <div class="history-status">
+              <img src="images/open.svg" width="24" height="26.5" alt="open" />
+              <h1>OEPN</h1>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="right">
-      <div class="card-fit">
-        <div class="title">
-          <img src="images/history.svg" width="24" height="24" alt="clock">
-          <h1>開閉履歴</h1>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
+  </body>
 </html>

@@ -12,7 +12,7 @@ h1 {
 }
 
 html {
-  background-color: #FAFCFF;
+  background-color: #fafcff;
 }
 
 body {
@@ -73,7 +73,7 @@ header .icon {
   padding-top: 3px;
 }
 
-.title img{
+.title img {
   margin-right: 8px;
 }
 
@@ -137,4 +137,54 @@ header .icon {
   padding: 5% 10%;
   display: flex;
   justify-content: center;
+}
+
+/* history */
+.history-title {
+  margin-bottom: 8px;
+}
+
+.history {
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.history > div > div {
+  padding: 1% 5%;
+}
+
+.history-date {
+  display: flex;
+}
+
+.history-date p {
+  margin: 0 0;
+  margin-top: 10px;
+  color: #cdcdcd;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 23px;
+}
+
+.history-date .time {
+  margin-left: 16px;
+}
+
+.history-status {
+  position: absolute;
+  top: 15%;
+  right: 0;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.history-status > h1 {
+  margin-left: 12px;
+}
+
+.history-position > h1 {
+  margin: 0;
+  margin-bottom: 10px;
 }
