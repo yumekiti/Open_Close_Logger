@@ -37,7 +37,7 @@ header .icon {
 
 .grid {
   display: grid;
-  gap: 3%;
+  gap: 5%;
   margin: 0 10%;
   margin-top: 40px;
   grid-template-columns: repeat(12, 1fr);
@@ -82,13 +82,16 @@ header .icon {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   margin-top: 8px;
   padding: 1% 0;
 }
 
 .now h1 {
-  font-size: 5vh;
-  font-weight: bold;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;
 }
 
 .now .time {
@@ -98,4 +101,17 @@ header .icon {
 /* position */
 .position {
   margin-top: 24px;
+}
+
+/* status */
+.status {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.status div {
+  padding: 5% 10%;
+  display: flex;
+  justify-content: center;
 }
