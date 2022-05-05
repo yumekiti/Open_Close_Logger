@@ -1,25 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
   <title>OC_trial_Lesson</title>
+  <meta charset="utf-8">
   <script src="/socket.io/socket.io.js"></script>
   <script src="/js/client.js"></script>
   <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
   <header>
-    <h2>OC_trial_Lesson</h2>
+    <div class="icon">
+      <img src="images/logo.svg" width="150" height="28" alt="icon" />
+    </div>
   </header>
 
-  <div class="main">
-    <div class="split-item split-left">
-      <div class="split-left__inner">
-        <span id="status"></span>
+  <div class="grid">
+    <div class="left">
+      <div class="card-fit">
+        <div class="title">
+          <img src="images/clock.svg" width="24" height="24" alt="clock">
+          <h1>現在時刻</h1>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="now">
+          <h1 class="date">2020/04/19</h1>
+          <h1 class="time">09:03:34</h1>
+        </div>
       </div>
     </div>
-    <div class="split-item split-right">
-      <div class="split-right__inner">
-        <ul id="history"></ul>
+    <div class="right">
+      <div class="card-fit">
+        <div class="title">
+          <img src="images/history.svg" width="24" height="24" alt="clock">
+          <h1>開閉履歴</h1>
+        </div>
       </div>
     </div>
   </div>
