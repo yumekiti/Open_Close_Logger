@@ -37,8 +37,23 @@ app.use(
   })
 );
 
+// Hello, World! を返す
+app.get("/hello", (req, res) => {
+  res.send("Hello, World!");
+});
+
 // publicを返す
 app.use('/', express.static('public'));
+
+// 状態データの取得
+app.get("/data", (req, res) => {
+  // 状態データの取得
+  db.all("SELECT * FROM status", (err, data) => {
+    // 状態データに値があれば送信
+    if (data.length !== 0) res.send(JSON.stringify(data));
+    else res.send(['No data']);
+  })
+});
 
 // 情報の受け取り、データの変更
 app.post("/", (req, res) => {
@@ -54,16 +69,6 @@ app.post("/", (req, res) => {
   db.all('SELECT * FROM status WHERE id = last_insert_rowid()', (err, data) => {
     // 変更があったことを知らせる
     res.send(data);
-  })
-});
-
-// 状態データの取得
-app.get("/data", (req, res) => {
-  // 状態データの取得
-  db.all("SELECT * FROM status", (err, data) => {
-    // 状態データに値があれば送信
-    if (data.length !== 0) res.send(JSON.stringify(data));
-    else res.send(['No data']);
   })
 });
 
