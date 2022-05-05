@@ -29,6 +29,11 @@ app.use(
   })
 );
 
+// Hello, World! を返す
+app.get("/hello", (req, res) => {
+  res.send("Hello, World!");
+});
+
 // publicを返す
 app.use('/', express.static('public'));
 

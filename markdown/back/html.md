@@ -7,16 +7,6 @@ HTML (Hypertext Markup Language、ハイパーテキスト・マークアップ�
 <br>
 
 /app/app.js
-```diff
-+ // publicを返す
-+ app.use('/', express.static('public'));
--  // Hello, World! を返す
-- app.get("/", (req, res) => {
--   res.send("Hello, World!");
-- });
-```
-
-/app/app.js
 ```js
 // モジュール読み込み
 const express = require("express");
@@ -24,6 +14,11 @@ const app = express();
 
 // サーバーポートの指定
 const PORT = process.env.PORT || 8080;
+
+// Hello, World! を返す
+app.get("/hello", (req, res) => {
+  res.send("Hello, World!");
+});
 
 // publicを返す
 app.use('/', express.static('public'));

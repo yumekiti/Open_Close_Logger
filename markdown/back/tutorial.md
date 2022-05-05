@@ -16,7 +16,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 // Hello, World! を返す
-app.get("/", (req, res) => {
+app.get("/hello", (req, res) => {
   res.send("Hello, World!");
 });
 
