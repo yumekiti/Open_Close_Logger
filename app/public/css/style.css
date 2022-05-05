@@ -84,7 +84,7 @@ header .icon {
   align-items: center;
   flex-wrap: wrap;
   margin-top: 8px;
-  padding: 1% 0;
+  padding: 1% 1%;
 }
 
 .now h1 {
@@ -99,8 +99,31 @@ header .icon {
 }
 
 /* position */
-.position {
+.position-title {
   margin-top: 24px;
+}
+
+.position {
+  margin-top: 16px;
+}
+
+.position div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0 1%;
+}
+
+.position h1 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 41px;
+}
+
+.position .category {
+  margin-left: 87px;
 }
 
 /* status */
