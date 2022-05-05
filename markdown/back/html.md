@@ -1,12 +1,13 @@
 ### [戻る](./../back-end.md)
 
-# HTMLを表示してみよう
+# HTML を表示してみよう
 
 HTML (Hypertext Markup Language、ハイパーテキスト・マークアップ・ランゲージ)は、ウェブサイトのコンテンツの構造を作るために使うコードです。
 
 <br>
 
 /app/app.js
+
 ```js
 // モジュール読み込み
 const express = require("express");
@@ -30,6 +31,7 @@ app.listen(PORT, () => {
 ```
 
 /app/public/index.html
+
 ```html
 <h1>Hello, World!!</h1>
 ```

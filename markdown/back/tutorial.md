@@ -1,12 +1,13 @@
 ### [戻る](./../back-end.md)
 
-# Expressを動かしてみよう
+# Express を動かしてみよう
 
-Expressとは、Web アプリケーションとモバイル・アプリケーション向けの一連の堅固な機能を提供する最小限で柔軟な Node.js Web アプリケーション・フレームワークです。
+Express とは、Web アプリケーションとモバイル・アプリケーション向けの一連の堅固な機能を提供する最小限で柔軟な Node.js Web アプリケーション・フレームワークです。
 
 <br>
 
 /app/app.js
+
 ```js
 // モジュール読み込み
 const express = require("express");

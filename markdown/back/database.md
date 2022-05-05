@@ -1,12 +1,13 @@
 ### [戻る](./../back-end.md)
 
-# SQLiteを使いデータを登録してみよう
+# SQLite を使いデータを登録してみよう
 
 SQLite はサーバとして動作させるのではなく単独のアプリケーションとして動作させることが可能な関係データベース管理システム (RDBMS) です。
 
 <br>
 
 /app/app.js
+
 ```js
 // モジュール読み込み
 const express = require("express");
