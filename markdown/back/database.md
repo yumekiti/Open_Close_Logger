@@ -50,8 +50,21 @@ app.post("/", (req, res) => {
   stmt.run(status)
   stmt.finalize()
 
-  // 変更があったことを知らせる
-  res.send("status update !");
+  // 状態データの送信
+  db.all('SELECT * FROM status WHERE id = last_insert_rowid()', (err, data) => {
+    // 変更があったことを知らせる
+    res.send(data);
+  })
+});
+
+// 状態データの取得
+app.get("/data", (req, res) => {
+  // 状態データの取得
+  db.all("SELECT * FROM status", (err, data) => {
+    // 状態データに値があれば送信
+    if (data.length !== 0) res.send(JSON.stringify(data));
+    else res.send(['No data']);
+  })
 });
 
 // サーバーの実行

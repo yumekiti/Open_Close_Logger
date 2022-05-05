@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test</title>
+</head>
+<body>
+  <h2>Test</h2>
+  <form id="form" action="/" method="post">
+    <input type="checkbox" name="status" value="1">
+    <input type="hidden" name="status" value="0">
+    <button id="submit-button" type="button">Send</button>
+  </form>
+  <div id="item"></div>
+
+  <script>
+    // データ取得
+    fetch("/data")
+    .then(response => {
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+      document.getElementById("item").textContent = JSON.stringify(data)
+    })
+    .catch(error => {
+      console.log("error");
+    });
+
+    // データ送信
+    const form = document.getElementById("form")
+    const submitButton = document.getElementById("submit-button")
+
+    submitButton.onclick = () => {
+      const formData = new FormData(form)
+      const action = form.getAttribute("action")
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: "status=" + formData.get('status'),
+      }
+      fetch(action, options)
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+        document.getElementById("item").textContent += JSON.stringify(data)
+      })
+      .catch(error => {
+        console.log("error");
+      });
+    }
+  </script>
+</body>
+</html>
