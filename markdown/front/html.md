@@ -13,7 +13,6 @@
     <title>OC_trial_Lesson</title>
     <meta charset="utf-8" />
     <script src="/socket.io/socket.io.js"></script>
-    <script src="/js/client.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
   </head>
   <body>
@@ -33,10 +32,7 @@
         </div>
 
         <div class="card">
-          <div id="now">
-            <h1>2020/04/19</h1>
-            <h1>09:03:34</h1>
-          </div>
+          <div id="now"></div>
         </div>
 
         <div class="position-title">
@@ -91,30 +87,10 @@
           </div>
         </div>
 
-        <div id="logs">
-          <div class="log">
-            <div class="card">
-              <div>
-                <p>2020/04/19</p>
-                <p>09:03:34</p>
-              </div>
-              <div>
-                <h1>2号館4階&nbsp;2404教室</h1>
-              </div>
-              <div class="log-status">
-                <img
-                  src="images/open.svg"
-                  width="24"
-                  height="26.5"
-                  alt="open"
-                />
-                <h2>OEPN</h2>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div id="logs"></div>
       </div>
     </div>
+    <script src="/js/client.js"></script>
   </body>
 </html>
 ```
@@ -124,6 +100,8 @@
 # 課題
 
 - title の値を変更してタイトルを変えてみよう
+- `2号館4階&nbsp;2404教室`と`ドア`の値を変更して反映できたか確認しよう
+  - `&nbsp;`は空白（半角スペース）です
 
 <br>
 

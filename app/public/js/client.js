@@ -1,3 +1,6 @@
+// コンソールに表示
+console.log("hello, console!");
+
 // モジュールの読み込み
 const socket = io();
 
@@ -10,9 +13,9 @@ const zeroPadding = (date) => {
 const formatDate = (date) => {
   const formatted =
     date.getFullYear() +
-    "-" +
+    "/" +
     zeroPadding(date.getMonth() + 1) +
-    "-" +
+    "/" +
     zeroPadding(date.getDate());
   return formatted;
 };
@@ -26,6 +29,17 @@ const formatTime = (date) => {
     ":" +
     zeroPadding(date.getSeconds());
   return formatted;
+};
+
+// 現在時刻
+const setTime = () => {
+  const date = new Date();
+  const now = document.getElementById("now");
+
+  now.innerHTML = `
+    <h1>${formatDate(date)}</h1>
+    <h1>${formatTime(date)}</h1>
+  `;
 };
 
 // ログの生成
@@ -51,8 +65,8 @@ const newState = (value) => {
       <div class="log-status">
       ${
         value.body
-          ? "<img src='images/close.svg' width='24' height='26.5' alt='close' />"
-          : "<img src='images/open.svg' width='24' height='26.5' alt='open' />"
+          ? "<img src='images/open.svg' width='24' height='26.5' alt='open' />"
+          : "<img src='images/close.svg' width='24' height='26.5' alt='close' />"
       }
       <h2>${value.body ? "OPEN" : "CLOSE"}</h2>
     </div>
@@ -80,6 +94,10 @@ socket.on("event", (status) => {
 
   // 最新の状態の画像に変更
   document.getElementById("status").innerHTML = latest
-    ? "<img src='images/close.svg' width='122' height='136' alt='close' />"
-    : "<img src='images/open.svg' width='122' height='136' alt='open' />";
+    ? "<img src='images/open.svg' width='122' height='136' alt='open' />"
+    : "<img src='images/close.svg' width='122' height='136' alt='close' />";
 });
+
+setInterval(() => {
+  setTime();
+}, 1000 / 60);
