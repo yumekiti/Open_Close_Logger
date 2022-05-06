@@ -13,8 +13,13 @@ const formatDate = (date) => {
     "-" +
     zeroPadding(date.getMonth() + 1) +
     "-" +
-    zeroPadding(date.getDate()) +
-    "&nbsp;" +
+    zeroPadding(date.getDate());
+  return formatted;
+};
+
+// フォーマットされた日付の生成
+const formatTime = (date) => {
+  const formatted =
     zeroPadding(date.getHours()) +
     ":" +
     zeroPadding(date.getMinutes()) +
@@ -26,6 +31,7 @@ const formatDate = (date) => {
 // ログの生成
 const newState = (value) => {
   const element = document.getElementById("history");
+  const name = document.getElementById("name");
   const div = document.createElement("div");
 
   // 日付のフォーマット
@@ -33,13 +39,23 @@ const newState = (value) => {
 
   // HTMLの追加
   div.innerHTML = `
-    <div class="card">
-      <p>${formatDate(date)}</p>
-      <div class="detail">
-        <span class="status">${value.body ? "OPEN" : "CLOSE"}</span>
-        <span class="circle" style="background-color: ${
-          value.body ? "blue" : "red"
-        }"></span>
+    <div class="history">
+      <div class="card">
+        <div class="history-date">
+          <p class="date">${formatDate(date)}</p>
+          <p class="time">${formatTime(date)}</p>
+        </div>
+        <div class="history-position">
+          <h1>${name.textContent}</h1>
+        </div>
+        <div class="history-status">
+          ${
+            value.body
+              ? "<img src='images/close.svg' width='24' height='26.5' alt='close' />"
+              : "<img src='images/open.svg' width='24' height='26.5' alt='open' />"
+          }
+          <h1>${value.body ? "OPEN" : "CLOSE"}</h1>
+        </div>
       </div>
     </div>
   `;
