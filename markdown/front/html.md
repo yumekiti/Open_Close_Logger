@@ -1,32 +1,138 @@
-## [HTMLをコーディングしてみよう](./../front-end.md)
+### [戻る](./../front-end.md)
 
-/app/index.html
+# HTML をコーディングしてみよう
+
+<br>
+
+/app/public/index.html
+
 ```html
 <!DOCTYPE html>
-<html>
-<head>
+<html lang="ja">
+  <head>
     <title>OC_trial_Lesson</title>
+    <meta charset="utf-8" />
     <script src="/socket.io/socket.io.js"></script>
-    <script src="/client.js"></script>
-    <link rel="stylesheet" type="text/css" href="/style.css">
-</head>
-<body>
-  <header>
-    <h2>OC_trial_Lesson</h2>
-  </header>
+    <script src="/js/client.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="icon">
+        <img src="images/logo.svg" width="150" height="28" alt="icon" />
+      </div>
+    </header>
 
-  <div class="main">
-    <div class="split-item split-left">
-      <div class="split-left__inner">
-        <span id="status"></span>
+    <div class="grid">
+      <div class="left">
+        <div class="card-fit">
+          <div class="title">
+            <img src="images/clock.svg" width="24" height="24" alt="clock" />
+            <h1>現在時刻</h1>
+          </div>
+        </div>
+
+        <div class="card">
+          <div id="now">
+            <h1>2020/04/19</h1>
+            <h1>09:03:34</h1>
+          </div>
+        </div>
+
+        <div class="position-title">
+          <div class="card-fit">
+            <div class="title">
+              <img
+                src="images/building.svg"
+                width="24"
+                height="24"
+                alt="building"
+              />
+              <h1>設置場所</h1>
+            </div>
+          </div>
+        </div>
+
+        <div class="status">
+          <div class="card-fit">
+            <div id="status">
+              <img
+                src="images/close.svg"
+                width="122"
+                height="136"
+                alt="close"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="position">
+          <div class="card">
+            <div>
+              <h1 id="name">2号館4階&nbsp;2404教室</h1>
+              <h1>ドア</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="log-title">
+          <div class="card-fit">
+            <div class="title">
+              <img
+                src="images/history.svg"
+                width="24"
+                height="24"
+                alt="clock"
+              />
+              <h1>開閉履歴</h1>
+            </div>
+          </div>
+        </div>
+
+        <div id="logs">
+          <div class="log">
+            <div class="card">
+              <div>
+                <p>2020/04/19</p>
+                <p>09:03:34</p>
+              </div>
+              <div>
+                <h1>2号館4階&nbsp;2404教室</h1>
+              </div>
+              <div class="log-status">
+                <img
+                  src="images/open.svg"
+                  width="24"
+                  height="26.5"
+                  alt="open"
+                />
+                <h2>OEPN</h2>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="split-item split-right">
-      <div class="split-right__inner">
-        <ul id="history"></ul>
-      </div>
-    </div>
-  </div>
-</body>
+  </body>
 </html>
 ```
+
+<br><br>
+
+# 課題
+
+- title の値を変更してタイトルを変えてみよう
+
+<br>
+
+## http://localhost:8080
+
+---
+
+<br><br>
+
+## 参考リンク
+
+- https://developer.mozilla.org/ja/docs/Web/HTML

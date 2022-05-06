@@ -1,6 +1,11 @@
-## [client.jsをコーディングしてみよう](./../front-end.md)
+### [戻る](./../front-end.md)
 
-/app/client.js
+# client.js をコーディングしてみよう
+
+<br>
+
+/app/public/js/client.js
+
 ```js
 // モジュールの読み込み
 const socket = io();
@@ -8,61 +13,104 @@ const socket = io();
 // ゼロ埋め
 const zeroPadding = (date) => {
   return date.toString().padStart(2, "0");
-}
+};
 
 // フォーマットされた日付の生成
 const formatDate = (date) => {
-  const formatted = date.getFullYear() + "-" + 
-  zeroPadding((date.getMonth() + 1)) + "-" + 
-  zeroPadding(date.getDate()) + "&nbsp;" + 
-  zeroPadding(date.getHours()) + ":" + 
-  zeroPadding(date.getMinutes()) + ":" + 
-  zeroPadding(date.getSeconds());
+  const formatted =
+    date.getFullYear() +
+    "-" +
+    zeroPadding(date.getMonth() + 1) +
+    "-" +
+    zeroPadding(date.getDate());
   return formatted;
-}
+};
+
+// フォーマットされた日付の生成
+const formatTime = (date) => {
+  const formatted =
+    zeroPadding(date.getHours()) +
+    ":" +
+    zeroPadding(date.getMinutes()) +
+    ":" +
+    zeroPadding(date.getSeconds());
+  return formatted;
+};
 
 // ログの生成
 const newState = (value) => {
-  const element = document.getElementById("history");
-  const li = document.createElement("li");
+  const element = document.getElementById("logs");
+  const name = document.getElementById("name");
+  const div = document.createElement("div");
+  div.className = "log";
 
   // 日付のフォーマット
-  const date = new Date(value.createdAt);
+  const date = new Date(value.created_at);
 
   // HTMLの追加
-  li.innerHTML = `
+  div.innerHTML = `
     <div class="card">
-      <p>${formatDate(date)}</p>
-      <div class="detail">
-        <span class="status">${value.body ? "OPEN" : "CLOSE" }</span>
-        <span class="circle" style="background-color: ${value.body ? "blue" : "red" }"></span>
+      <div>
+        <p>${formatDate(date)}</p>
+        <p>${formatTime(date)}</p>
       </div>
+      <div>
+        <h1>${name.textContent}</h1>
+      </div>
+      <div class="log-status">
+      ${
+        value.body
+          ? "<img src='images/close.svg' width='24' height='26.5' alt='close' />"
+          : "<img src='images/open.svg' width='24' height='26.5' alt='open' />"
+      }
+      <h2>${value.body ? "OPEN" : "CLOSE"}</h2>
     </div>
-  `
-  element.prepend(li);
-}
+  `;
+  element.prepend(div);
+};
 
 // データの受け取ったとき
 socket.on("event", (status) => {
   // 最新の状態を入れる用
-  let latest
+  let latest;
 
   // 初期ロードかどうか
-  if(Array.isArray(status)){
+  if (Array.isArray(status)) {
     // 最新の状態を入れる
-    latest = status.slice(-1)[0].body
+    latest = status.slice(-1)[0].body;
     // 複数ログを生成
-    status.map(value => newState(value))
+    status.map((value) => newState(value));
   } else {
     // 最新の状態を入れる
-    latest = status.body
+    latest = status.body;
     // 単一ログを生成
-    newState(status)
+    newState(status);
   }
 
   // 最新の状態の画像に変更
-  document.getElementById("status").innerHTML = latest ?
-  "<img src='/images/unlock' alt='開いている時のアイコン' width='300' height='380' />" :
-  "<img src='/images/lock' alt='閉まっている時のアイコン' width='300' height='380' />"
-})
+  document.getElementById("status").innerHTML = latest
+    ? "<img src='images/close.svg' width='122' height='136' alt='close' />"
+    : "<img src='images/open.svg' width='122' height='136' alt='open' />";
+});
 ```
+
+<br><br>
+
+# 課題
+
+- デベロッパーツールのコンソール(console)にエラーが出ていないか確認する
+  - ショートカットキー（Ctrl + Shift + i）
+- /app/client.js の一番上に`console.log("hello, console!");`と追加してコンソールに表示されるか確認する
+
+<br>
+
+## http://localhost:8080
+
+---
+
+<br><br>
+
+## 参考リンク
+
+- https://www.javadrive.jp/javascript/dom/index20.html
+- https://developer.mozilla.org/ja/docs/Web/JavaScript
