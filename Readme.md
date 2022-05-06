@@ -63,7 +63,8 @@ $ node ./app.js
 
 ## EXE
 
-.exe を起動するだけで動きます。
+/app で `npm install` を実行し .exe を同じフォルダに入れ .exe を起動するだけです。<br>
+/app に node_modules がある場合は `npm install` 無しで起動できます。
 
 ```sh
 $ ./*.exe
