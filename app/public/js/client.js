@@ -30,7 +30,7 @@ const formatTime = (date) => {
 
 // ログの生成
 const newState = (value) => {
-  const element = document.getElementById("history");
+  const element = document.getElementById("logs");
   const name = document.getElementById("name");
   const div = document.createElement("div");
 
