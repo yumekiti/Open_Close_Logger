@@ -26,13 +26,13 @@ const formatDate = (date) => {
 // ログの生成
 const newState = (value) => {
   const element = document.getElementById("history");
-  const li = document.createElement("li");
+  const div = document.createElement("div");
 
   // 日付のフォーマット
   const date = new Date(value.created_at);
 
   // HTMLの追加
-  li.innerHTML = `
+  div.innerHTML = `
     <div class="card">
       <p>${formatDate(date)}</p>
       <div class="detail">
@@ -43,7 +43,7 @@ const newState = (value) => {
       </div>
     </div>
   `;
-  element.prepend(li);
+  element.prepend(div);
 };
 
 // データの受け取ったとき
@@ -66,6 +66,6 @@ socket.on("event", (status) => {
 
   // 最新の状態の画像に変更
   document.getElementById("status").innerHTML = latest
-    ? "<img src='/images/unlock.png' alt='開いている時のアイコン' width='300' height='380' />"
-    : "<img src='/images/lock.png' alt='閉まっている時のアイコン' width='300' height='380' />";
+    ? "<img src='images/close.svg' width='122' height='136' alt='close' />"
+    : "<img src='images/open.svg' width='122' height='136' alt='open' />";
 });

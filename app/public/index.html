@@ -4,7 +4,6 @@
     <title>OC_trial_Lesson</title>
     <meta charset="utf-8" />
     <script src="/socket.io/socket.io.js"></script>
-    <script src="/js/client.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
   </head>
   <body>
@@ -47,7 +46,7 @@
         <div class="status">
           <div class="card-fit">
             <div class="status-image">
-              <img src="images/open.svg" width="122" height="136" alt="open" />
+              <div id="status"></div>
             </div>
           </div>
         </div>
@@ -77,22 +76,25 @@
           </div>
         </div>
 
-        <div class="history">
-          <div class="card">
-            <div class="history-date">
-              <p class="date">2020/04/19</p>
-              <p class="time">09:03:34</p>
-            </div>
-            <div class="history-position">
-              <h1>2号館4階&nbsp;2404教室</h1>
-            </div>
-            <div class="history-status">
-              <img src="images/open.svg" width="24" height="26.5" alt="open" />
-              <h1>OEPN</h1>
+        <div id="history">
+          <div class="history">
+            <div class="card">
+              <div class="history-date">
+                <p class="date">2020/04/19</p>
+                <p class="time">09:03:34</p>
+              </div>
+              <div class="history-position">
+                <h1>2号館4階&nbsp;2404教室</h1>
+              </div>
+              <div class="history-status">
+                <img src="images/open.svg" width="24" height="26.5" alt="open" />
+                <h1>OEPN</h1>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <script src="/js/client.js"></script>
   </body>
 </html>
