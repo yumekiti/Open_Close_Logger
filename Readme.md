@@ -99,6 +99,10 @@ $ python ./python/host/main.py
 
 <br><br>
 
+# リポジトリ
+
+https://github.com/yumekiti/OC_Trial_Lesson
+
 # 制作者
 
 [@yumekiti1204](https://twitter.com/yumekiti1204)
