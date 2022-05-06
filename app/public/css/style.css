@@ -140,17 +140,17 @@ header .icon {
   margin-bottom: 8px;
 }
 
-#log {
+.log {
   position: relative;
   margin-bottom: 18px;
 }
 
-#log > div > div {
+.log > div > div {
   padding: 1% 5%;
   display: flex;
 }
 
-#log > div > div > p {
+.log > div > div > p {
   margin: 0 0;
   margin-top: 10px;
   color: #cdcdcd;
@@ -160,7 +160,7 @@ header .icon {
   line-height: 23px;
 }
 
-#log > div > div > p + p {
+.log > div > div > p + p {
   margin-left: 16px;
 }
 
@@ -172,7 +172,7 @@ header .icon {
   align-items: center;
 }
 
-#log div > h1 {
+.log div > h1 {
   margin: 0;
   margin-bottom: 10px;
 }
