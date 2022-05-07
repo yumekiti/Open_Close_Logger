@@ -83,7 +83,7 @@ header .icon {
 
 .grid {
   display: grid;
-  gap: 5%;
+  gap: 0 5%;
   margin: 0 10%;
   margin-top: 40px;
   grid-template-columns: repeat(12, 1fr);
@@ -147,7 +147,7 @@ header .icon {
 }
 
 .position {
-  margin-top: 16px;
+  margin: 5% 0;
 }
 
 .position div {
@@ -208,6 +208,11 @@ header .icon {
   margin-left: 16px;
 }
 
+.log div > h1 {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
 @media screen and (min-width: 1000px) {
   .log-status {
     position: absolute;
@@ -224,11 +229,6 @@ header .icon {
     line-height: 38px;
     margin-left: 12px;
   }
-}
-
-.log div > h1 {
-  margin: 0;
-  margin-bottom: 10px;
 }
 
 /* responsive */
