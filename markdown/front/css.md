@@ -173,12 +173,22 @@ header .icon {
   margin-left: 16px;
 }
 
-.log-status {
-  position: absolute;
-  top: 0;
-  right: 0;
-  display: flex;
-  align-items: center;
+@media (min-width: 1024px) {
+  .log-status {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .log-status > h2 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 38px;
+    margin-left: 12px;
+  }
 }
 
 .log div > h1 {
@@ -186,12 +196,25 @@ header .icon {
   margin-bottom: 10px;
 }
 
-.log-status > h2 {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 32px;
-  line-height: 38px;
-  margin-left: 12px;
+/* responsive */
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .log-status {
+    display: flex;
+    align-items: center;
+  }
+
+  .log-status > h2 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 38px;
+    margin: 0;
+    margin-left: 12px;
+  }
 }
 ```
 

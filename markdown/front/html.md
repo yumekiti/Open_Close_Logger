@@ -12,8 +12,10 @@
   <head>
     <title>OC_trial_Lesson</title>
     <meta charset="utf-8" />
-    <script src="/socket.io/socket.io.js"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="icon" href="images/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <script src="/socket.io/socket.io.js"></script>
   </head>
   <body>
     <header>
