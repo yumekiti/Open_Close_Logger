@@ -46,7 +46,7 @@
     - https://www.switch-science.com/catalog/6900/
 - センサー（リードスイッチ）
   - 815
-    - www.amazon.co.jp/dp/B07FLWGS73
+    - https://www.amazon.co.jp/dp/B07FLWGS73/
 
 合計：1587 円
 
