@@ -105,8 +105,9 @@ header .icon {
 }
 
 .position div {
+  width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
   padding: 0 1%;
@@ -117,10 +118,6 @@ header .icon {
   font-weight: 700;
   font-size: 28px;
   line-height: 41px;
-}
-
-.position h1 + h1 {
-  margin-left: 87px;
 }
 
 /* status */
@@ -165,7 +162,7 @@ header .icon {
   margin-left: 16px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1000px) {
   .log-status {
     position: absolute;
     top: 0;
@@ -189,7 +186,7 @@ header .icon {
 }
 
 /* responsive */
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 1000px) {
   .grid {
     grid-template-columns: repeat(6, 1fr);
   }
