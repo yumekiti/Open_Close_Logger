@@ -24,6 +24,9 @@
       </div>
     </header>
 
+    <div class="loading">
+      <img src="images/icon.png" width="160" alt="Logo" />
+    </div>
     <div class="grid">
       <div class="left">
         <div class="card-fit">

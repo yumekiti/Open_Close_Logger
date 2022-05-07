@@ -9,6 +9,43 @@
 ```css
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 
+/* loading */
+.loading {
+  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background-color: #fafcff;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  width: 100%;
+  height: 100%;
+  animation: loading 0.5s 1s 1 forwards;
+}
+
+.loading img {
+  animation: loading-icon 0.5s 1;
+}
+
+@keyframes loading-icon {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes loading {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 /* global */
 * {
   font-family: "Roboto";
