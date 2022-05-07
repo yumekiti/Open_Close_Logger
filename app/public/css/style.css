@@ -84,7 +84,7 @@ header .icon {
   align-items: center;
   flex-wrap: wrap;
   margin-top: 8px;
-  padding: 2% 1%;
+  padding: 3% 10%;
 }
 
 #now h1 {
@@ -92,6 +92,7 @@ header .icon {
   font-weight: 700;
   font-size: 32px;
   line-height: 38px;
+  margin: 3% 0;
 }
 
 /* position */
