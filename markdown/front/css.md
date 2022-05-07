@@ -11,7 +11,6 @@
 
 /* loading */
 .loading {
-  display: block;
   display: flex;
   justify-content: center;
   align-items: center;

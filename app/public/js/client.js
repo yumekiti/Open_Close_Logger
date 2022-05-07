@@ -101,3 +101,7 @@ socket.on("event", (status) => {
 setInterval(() => {
   setTime();
 }, 1000 / 60);
+
+window.addEventListener("unload", (e) => {
+  window.scroll({ top: 0 });
+});
