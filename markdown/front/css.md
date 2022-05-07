@@ -93,7 +93,7 @@ header .icon {
   align-items: center;
   flex-wrap: wrap;
   margin-top: 8px;
-  padding: 2% 1%;
+  padding: 3% 10%;
 }
 
 #now h1 {
@@ -101,6 +101,7 @@ header .icon {
   font-weight: 700;
   font-size: 32px;
   line-height: 38px;
+  margin: 3% 0;
 }
 
 /* position */
@@ -113,8 +114,9 @@ header .icon {
 }
 
 .position div {
+  width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
   padding: 0 1%;
@@ -125,10 +127,6 @@ header .icon {
   font-weight: 700;
   font-size: 28px;
   line-height: 41px;
-}
-
-.position h1 + h1 {
-  margin-left: 87px;
 }
 
 /* status */
@@ -173,7 +171,7 @@ header .icon {
   margin-left: 16px;
 }
 
-@media (min-width: 1024px) {
+@media screen and (min-width: 1000px) {
   .log-status {
     position: absolute;
     top: 0;
@@ -197,7 +195,7 @@ header .icon {
 }
 
 /* responsive */
-@media (max-width: 480px) {
+@media screen and (max-width: 1000px) {
   .grid {
     grid-template-columns: repeat(6, 1fr);
   }
@@ -213,6 +211,7 @@ header .icon {
     font-size: 32px;
     line-height: 38px;
     margin: 0;
+    margin-top: 3px;
     margin-left: 12px;
   }
 }
