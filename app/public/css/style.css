@@ -187,6 +187,7 @@ header .icon {
   margin-bottom: 10px;
 }
 
+/* responsive */
 @media (max-width: 480px) {
   .grid {
     grid-template-columns: repeat(6, 1fr);
