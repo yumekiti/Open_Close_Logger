@@ -15,7 +15,7 @@
   animation: loading 0.5s 1s 1 forwards;
 }
 
-.loading img {
+.loading > img {
   animation: loading-icon 0.5s 1;
 }
 
@@ -64,7 +64,7 @@ header {
   box-shadow: 2px 2px 8px 1px rgba(220, 220, 220, 0.4);
 }
 
-header .icon {
+header > .icon {
   height: 100%;
   display: flex;
   justify-content: center;
@@ -79,7 +79,7 @@ header .icon {
   grid-template-columns: repeat(12, 1fr);
 }
 
-.grid div {
+.grid > div {
   grid-column: 6 span;
 }
 
@@ -109,7 +109,7 @@ header .icon {
   padding-top: 3px;
 }
 
-.title img {
+.title > img {
   margin-right: 8px;
 }
 
@@ -149,7 +149,7 @@ header .icon {
   padding: 0 1%;
 }
 
-.position h1 {
+.position > h1 {
   font-style: normal;
   font-weight: 700;
   font-size: 28px;
@@ -163,7 +163,7 @@ header .icon {
   justify-content: center;
 }
 
-.status div {
+.status > div {
   padding: 5% 10%;
   display: flex;
   justify-content: center;
