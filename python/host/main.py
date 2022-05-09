@@ -1,20 +1,38 @@
-# __pycache__ 生成させない
-import sys
-sys.dont_write_bytecode = True
-
 import serial
+from serial.tools import list_ports
 import requests
-import search
 
-# 変更
-COM=search.usb()
-bitRate=9600
+COM = ''
+
+while len(COM) <= 0 :
+  # シリアルポート取得
+  ports = list_ports.comports()
+
+  # 選択
+  for index, info in enumerate(ports):
+    if('USB' in info[1]):
+      print(str((1 + index)) + ' : ' + str(info))
+
+  try:
+    num = input("シリアルポートを選択してください : ")
+    num = int(num) - 1
+
+    COM = ports[num][0]
+  except:
+    COM = ''
+
+  if COM :
+    break
 
 # シリアル通信
-ser = serial.Serial(COM, bitRate, timeout=3)
+bitRate=9600
+try:
+  ser = serial.Serial(COM, bitRate, timeout=3)
+  url = input("WebサーバーのURLを入力してください : ")
+  print('Ready')
+except serial.serialutil.SerialException:
+  print('アクセスが拒否されました')
 
-# 宣言
-url = "http://localhost:8080"
 headers = {
   'Accept': '',
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -23,8 +41,6 @@ headers = {
 # 初期化
 status = 0
 lock = 0
-
-print('Ready')
 
 try:
   while True:
@@ -42,11 +58,11 @@ try:
         print(response.text)
 
       lock = status
-      print(status)
 
+except requests.exceptions.ConnectionError :
+  print("Webサーバーと接続できませんでした")
 except Exception as err:
   print(err)
 
 finally:
-  print('program end')
   ser.close()
