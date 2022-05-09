@@ -203,22 +203,20 @@ header .icon {
   margin-bottom: 10px;
 }
 
-@media screen and (min-width: 1000px) {
-  .log-status {
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-  }
+.log-status {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+}
 
-  .log-status > h2 {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 32px;
-    line-height: 38px;
-    margin-left: 12px;
-  }
+.log-status > h2 {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 38px;
+  margin-left: 12px;
 }
 
 /* responsive */
@@ -228,6 +226,7 @@ header .icon {
   }
 
   .log-status {
+    position: static;
     display: flex;
     align-items: center;
   }
