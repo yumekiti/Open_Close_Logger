@@ -2,7 +2,7 @@
   <img src="./app/public/images/icon.png" width="160" alt="Logo" />
 </p>
 
-# OpenCloseLogger (mini)：開閉状態管理アプリ
+# OpenCloseLogger_pico：開閉状態管理アプリ
 
 [![github license](https://shields.io/github/license/yumekiti/OC_Trial_Lesson)](https://licenses.opensource.jp/MIT/MIT.html)
 ![npm version](https://img.shields.io/node/v/express?style=flat)
