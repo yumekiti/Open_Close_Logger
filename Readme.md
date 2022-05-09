@@ -14,7 +14,7 @@
 
 # 仕組み
 
-<img src="markdown/images/system.svg" alt="system" />
+<img src="markdown/images/system-1.svg" alt="system" />
 
 シリアル通信で開閉状態の情報を受け取り表示しています
 

@@ -16,7 +16,7 @@
 
 ---
 
-## 詳細設計
+## [詳細設計](./development/detail.md)
 
 ---
 

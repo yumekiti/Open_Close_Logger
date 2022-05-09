@@ -4,38 +4,36 @@
 
 ## システム構成図
 
-<img src="../images/system.svg" alt="system" />
+### ローカル完結の場合
+
+<img src="../images/system-1.svg" alt="system" />
+
+### web サーバー公開済みの場合
+
+<img src="../images/system-2.svg" alt="system" />
 
 <br><br>
 
 ## テーブル定義
 
-### status テーブル
-
-| name       | type      | 用途     |
-| ---------- | --------- | -------- |
-| id         | INTEGER   |          |
-| body       | BOOLEAN   | 開閉状態 |
-| created_at | TIMESTAMP | 変更時間 |
+- status テーブル
+- names テーブル
+- categories テーブル
 
 <br><br>
 
 ## 機能一覧
 
-- センサー読み込み・受け取り
+- センサー登録
+- 開閉状態の受け取り
+- 開閉状態の送信
 - 開閉状態のリアルタイム表示
 
 <br><br>
 
 ## デザイン
 
-### 案 1
-
-<img src="../images/design-1.png" alt="design-1" />
-
-### 案 2
-
-<img src="../images/design-2.png" alt="design-2" />
+- パッと見て開閉状態が分かる
 
 <br><br>
 
