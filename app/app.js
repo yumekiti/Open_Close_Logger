@@ -10,11 +10,25 @@ const db = new sqlite3.Database("./database.db");
 db.serialize(() => {
   // テーブルがあれば削除
   db.run("DROP TABLE IF EXISTS status");
-  // テーブルの作成
+  db.run("DROP TABLE IF EXISTS names");
+  db.run("DROP TABLE IF EXISTS categories");
+  // status テーブルの作成
   db.run(`CREATE TABLE IF NOT EXISTS status (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     body BOOLEAN,
-    created_at TIMESTAMP DEFAULT(DATETIME('now','localtime'))
+    created_at TIMESTAMP DEFAULT(DATETIME('now','localtime')),
+    name_id INTEGER
+  )`);
+  // names テーブルの作成
+  db.run(`CREATE TABLE IF NOT EXISTS names (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    body TEXT,
+    category_id INTEGER
+  )`);
+  // categories テーブルの作成
+  db.run(`CREATE TABLE IF NOT EXISTS categories (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    body TEXT
   )`);
 });
 
