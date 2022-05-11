@@ -7,6 +7,7 @@ const io = require("socket.io")(http);
 const sqlite3 = require("sqlite3").verbose();
 const db = new sqlite3.Database("./database.db");
 
+// データベースの初期化
 db.serialize(() => {
   // テーブルがあれば削除
   db.run("DROP TABLE IF EXISTS status");
@@ -16,19 +17,7 @@ db.serialize(() => {
   db.run(`CREATE TABLE IF NOT EXISTS status (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     body BOOLEAN,
-    created_at TIMESTAMP DEFAULT(DATETIME('now','localtime')),
-    name_id INTEGER
-  )`);
-  // names テーブルの作成
-  db.run(`CREATE TABLE IF NOT EXISTS names (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    body TEXT,
-    category_id INTEGER
-  )`);
-  // categories テーブルの作成
-  db.run(`CREATE TABLE IF NOT EXISTS categories (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    body TEXT
+    created_at TIMESTAMP DEFAULT(DATETIME('now','localtime'))
   )`);
 });
 
@@ -67,9 +56,7 @@ app.post("/", (req, res) => {
   const status = JSON.parse(Boolean(Number(req.body.status)));
 
   // 新しい状態データの作成
-  const stmt = db.prepare("INSERT INTO status(body) VALUES (?)");
-  stmt.run(status);
-  stmt.finalize();
+  db.prepare("INSERT INTO status(body) VALUES (?)").run(status).finalize();
 
   // 状態データの送信
   db.all("SELECT * FROM status WHERE id = last_insert_rowid()", (err, data) => {
