@@ -17,8 +17,6 @@
 ## テーブル定義
 
 - status テーブル
-- names テーブル
-- categories テーブル
 
 <br><br>
 

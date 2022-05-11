@@ -13,26 +13,6 @@
 | id         | INTEGER   |                 |
 | body       | BOOLEAN   | 開閉状態        |
 | created_at | TIMESTAMP | 変更時間        |
-| name_id    | INTEGER   | 外部キー(names) |
-
----
-
-### names テーブル
-
-| name        | type    | 用途                 |
-| ----------- | ------- | -------------------- |
-| id          | INTEGER |                      |
-| body        | TEXT    | 名前                 |
-| category_id | INTEGER | 外部キー(categories) |
-
----
-
-### categories テーブル
-
-| name | type    | 用途       |
-| ---- | ------- | ---------- |
-| id   | INTEGER |            |
-| body | TEXT    | カテゴリ名 |
 
 ---
 
@@ -55,6 +35,4 @@
 
 <br><br>
 
-## 機能一覧
-
-[機能一覧](./function.md)
+## [機能一覧](./function.md)

@@ -11,8 +11,6 @@ const db = new sqlite3.Database("./database.db");
 db.serialize(() => {
   // テーブルがあれば削除
   db.run("DROP TABLE IF EXISTS status");
-  db.run("DROP TABLE IF EXISTS names");
-  db.run("DROP TABLE IF EXISTS categories");
   // status テーブルの作成
   db.run(`CREATE TABLE IF NOT EXISTS status (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
