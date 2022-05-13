@@ -7,106 +7,17 @@
 /app/public/index.html
 
 ```html
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <title>OC_trial_Lesson</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="icon" href="images/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="/css/style.css" />
-    <script src="/socket.io/socket.io.js"></script>
-  </head>
-  <body>
-    <header>
-      <div class="icon">
-        <img src="images/logo.svg" width="150" height="28" alt="icon" />
-      </div>
-    </header>
-
-    <div class="loading">
-      <img src="images/icon.png" width="160" alt="Logo" />
-    </div>
-    <div class="grid">
-      <div class="left">
-        <div class="card-fit">
-          <div class="title">
-            <img src="images/clock.svg" width="24" height="24" alt="clock" />
-            <h1>現在時刻</h1>
-          </div>
-        </div>
-
-        <div class="card">
-          <div id="now"></div>
-        </div>
-
-        <div class="position-title">
-          <div class="card-fit">
-            <div class="title">
-              <img
-                src="images/building.svg"
-                width="24"
-                height="24"
-                alt="building"
-              />
-              <h1>設置場所</h1>
-            </div>
-          </div>
-        </div>
-
-        <div class="status">
-          <div class="card-fit">
-            <div id="status">
-              <img
-                src="images/close.svg"
-                width="122"
-                height="136"
-                alt="close"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="position">
-          <div class="card">
-            <div>
-              <h1 id="name">2号館4階&nbsp;2404教室</h1>
-              <h1>ドア</h1>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="right">
-        <div class="log-title">
-          <div class="card-fit">
-            <div class="title">
-              <img
-                src="images/history.svg"
-                width="24"
-                height="24"
-                alt="clock"
-              />
-              <h1>開閉履歴</h1>
-            </div>
-          </div>
-        </div>
-
-        <div id="logs"></div>
-      </div>
-    </div>
-    <script src="/js/client.js"></script>
-  </body>
-</html>
+<!-- 現在時刻 -->
+<div class="card">
+  <div id="now"></div>
+</div>
 ```
 
 <br><br>
 
 # 課題
 
-- title の値を変更してタイトルを変えてみよう
-- `2号館4階&nbsp;2404教室`と`ドア`の値を変更して反映できたか確認しよう
-  - `&nbsp;`は空白（半角スペース）です
+- `現在時刻`のコメントの下にコーディングしてみよう
 
 <br>
 

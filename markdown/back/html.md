@@ -13,7 +13,7 @@ HTML (Hypertext Markup Language、ハイパーテキスト・マークアップ�
 app.use("/", express.static("public"));
 ```
 
-/app/public/index.html
+/app/public/test.html
 
 ```html
 <h1>Hello, World!!</h1>
@@ -25,11 +25,10 @@ app.use("/", express.static("public"));
 
 - 下記リンクに `Hello, World!!` と表示されるか、確認する
 - `Hello, World!` の部分を変更して反映されるか確認する
-- 好きな `HTML` を書いてみてみる
 
 <br>
 
-## http://localhost:8080
+## http://localhost:8080/test.html
 
 ---
 

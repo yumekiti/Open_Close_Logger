@@ -98,10 +98,5 @@ socket.on("event", (status) => {
     : "<img src='images/close.svg' width='122' height='136' alt='close' />";
 });
 
-setInterval(() => {
-  setTime();
-}, 1000 / 60);
-
-window.addEventListener("unload", (e) => {
-  window.scroll({ top: 0 });
-});
+// 時間を更新
+setInterval(() => setTime(), 1000 / 60);
