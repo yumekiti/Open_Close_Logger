@@ -10,8 +10,6 @@
 
 1. [SQLite を使いデータを登録してみよう](./back/database.md)
 
-1. [リアルタイム処理](./back/real-time.md)
-
 <br><br>
 
 ### 参考リンク

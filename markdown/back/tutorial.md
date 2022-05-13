@@ -9,22 +9,8 @@ Express とは、Web アプリケーションとモバイル・アプリケー�
 /app/app.js
 
 ```js
-// モジュール読み込み
-const express = require("express");
-const app = express();
-
-// サーバーポートの指定
-const PORT = process.env.PORT || 8080;
-
 // Hello, World! を返す
-app.get("/hello", (req, res) => {
-  res.send("Hello, World!");
-});
-
-// サーバーの実行
-app.listen(PORT, () => {
-  console.log("server listening. Port:" + PORT);
-});
+app.get("/hello", (req, res) => res.send("Hello, World!"));
 ```
 
 <br><br>

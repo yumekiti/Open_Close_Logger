@@ -15,7 +15,7 @@ db.serialize(() => {
   db.run(`CREATE TABLE IF NOT EXISTS status (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     body BOOLEAN,
-    created_at TIMESTAMP DEFAULT(DATETIME('now','localtime'))
+    created_at TIMESTAMP DEFAULT(DATETIME('now','utc'))
   )`);
 });
 
@@ -31,9 +31,7 @@ app.use(
 );
 
 // Hello, World! を返す
-app.get("/hello", (req, res) => {
-  res.send("Hello, World!");
-});
+app.get("/hello", (req, res) => res.send("Hello, World!"));
 
 // publicを返す
 app.use("/", express.static("public"));
