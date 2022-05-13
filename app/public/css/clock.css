@@ -1,0 +1,17 @@
+/* clock */
+#now {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 8px;
+  padding: 3% 10%;
+}
+
+#now h1 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;
+  margin: 3% 0;
+}

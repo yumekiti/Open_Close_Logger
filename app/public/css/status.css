@@ -1,0 +1,12 @@
+/* status */
+.status {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.status > div {
+  padding: 5% 10%;
+  display: flex;
+  justify-content: center;
+}

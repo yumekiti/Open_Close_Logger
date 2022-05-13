@@ -1,0 +1,16 @@
+/* title */
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  width: 160px;
+}
+
+.title h1 {
+  padding-top: 3px;
+}
+
+.title > img {
+  margin-right: 8px;
+}

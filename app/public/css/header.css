@@ -1,0 +1,14 @@
+/* header */
+header {
+  background-color: #fff;
+  height: 60px;
+  width: 100%;
+  box-shadow: 2px 2px 8px 1px rgba(220, 220, 220, 0.4);
+}
+
+header > .icon {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
