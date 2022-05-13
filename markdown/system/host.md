@@ -4,17 +4,40 @@
 /python/host.py
 ```python
 import serial
+from serial.tools import list_ports
 import requests
 
-# 変更
-COM="COM3"
-bitRate=9600
+COM = ''
+
+while len(COM) <= 0 :
+  # シリアルポート取得
+  ports = list_ports.comports()
+
+  # 選択
+  for index, info in enumerate(ports):
+    if('USB' in info[1]):
+      print(str((1 + index)) + ' : ' + str(info))
+
+  try:
+    num = input("シリアルポートを選択してください : ")
+    num = int(num) - 1
+
+    COM = ports[num][0]
+  except:
+    COM = ''
+
+  if COM :
+    break
 
 # シリアル通信
-ser = serial.Serial(COM, bitRate, timeout=3)
+bitRate=9600
+try:
+  ser = serial.Serial(COM, bitRate, timeout=3)
+  url = input("WebサーバーのURLを入力してください : ")
+  print('Ready')
+except serial.serialutil.SerialException:
+  print('アクセスが拒否されました')
 
-# 宣言
-url = "http://localhost:8080"
 headers = {
   'Accept': '',
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -40,10 +63,13 @@ try:
         print(response.text)
 
       lock = status
-      print(status)
 
-except:
-  print('program end')
+except requests.exceptions.ConnectionError :
+  print("Webサーバーと接続できませんでした")
+except Exception as err:
+  print(err)
+
+finally:
   ser.close()
 ```
 
