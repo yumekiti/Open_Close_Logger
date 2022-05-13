@@ -1,13 +1,13 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto);
-@import url(./global.css);
-@import url(./loading.css);
-@import url(./header.css);
-@import url(./title.css);
-@import url(./clock.css);
-@import url(./position.css);
-@import url(./status.css);
-@import url(./log.css);
-@import url(./responsive.css);
+@import url(./modules/global.css);
+@import url(./modules/loading.css);
+@import url(./modules/header.css);
+@import url(./modules/title.css);
+@import url(./modules/clock.css);
+@import url(./modules/position.css);
+@import url(./modules/status.css);
+@import url(./modules/log.css);
+@import url(./modules/responsive.css);
 
 
 html {
