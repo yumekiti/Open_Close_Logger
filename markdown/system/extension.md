@@ -1,5 +1,6 @@
-## [余裕があれば](./../front-end.md)
-状態によってLEDを光らせてみよう。
+### [戻る](./../system.md)
+
+# 余裕があれば
 
 /python/main.py
 ```python
@@ -31,3 +32,15 @@ while True:
 
   utime.sleep(0.50)
 ```
+
+<br><br>
+
+# 課題
+
+- 状態によってLEDを光らせてみよう。
+
+<br><br>
+
+## 参考リンク
+
+- [./led.md](./led.md)

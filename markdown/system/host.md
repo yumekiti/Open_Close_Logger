@@ -1,7 +1,9 @@
-## [host.pyを実行してみよう](./../front-end.md)
-変更部分を変えてから実行しよう
+### [戻る](./../system.md)
+
+# host.pyを実行してみよう
 
 /python/host.py
+
 ```python
 import serial
 from serial.tools import list_ports
@@ -73,5 +75,14 @@ finally:
   ser.close()
 ```
 
-### 参考リンク
+<br><br>
+
+# 課題
+
+- 実行して`http://localhost:8080`に反映されるか確認しよう
+
+<br><br>
+
+## 参考リンク
+
 - https://engineer-lifestyle-blog.com/code/python/pyserial-communication-usage/

@@ -1,7 +1,13 @@
-## [main.pyをpicoに書き込んでみよう](./../front-end.md)
-実行してうまく動作していたら書き込んでみよう。
+### [戻る](./../system.md)
+
+# main.pyをpicoに書き込んでみよう
+
+書き込むことによって次からは接続するだけで実行されるようになります
+
+<br>
 
 /python/main.py
+
 ```python
 import utime
 from machine import Pin
@@ -27,3 +33,15 @@ while True:
 
   utime.sleep(0.50)
 ```
+
+<br><br>
+
+# 課題
+
+- 実行してうまく動作していたら書き込んでみよう。
+
+<br><br>
+
+## 参考リンク
+
+- https://blog.tkrel.com/14899
