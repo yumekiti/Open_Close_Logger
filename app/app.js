@@ -15,7 +15,7 @@ db.serialize(() => {
   db.run(`CREATE TABLE IF NOT EXISTS status (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     body BOOLEAN,
-    created_at TIMESTAMP DEFAULT(DATETIME('now','utc'))
+    created_at TIMESTAMP DEFAULT(DATETIME('now','+9 hours'))
   )`);
 });
 
