@@ -44,7 +44,6 @@ lock = 0
 
 try:
   while True:
-
     # 状態の取得
     status = ser.read_all().decode('UTF-8').rstrip('\n').rstrip('\r')
 
