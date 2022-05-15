@@ -42,7 +42,7 @@ app.get("/data", (req, res) => {
   db.all("SELECT * FROM status", (err, data) => {
     // 状態データに値があれば送信
     if (data.length !== 0) res.send(JSON.stringify(data));
-    else res.send({"message": "No data"});
+    else res.send({ message: "No data" });
   });
 });
 
