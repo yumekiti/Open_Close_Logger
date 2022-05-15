@@ -1,5 +1,64 @@
-# -*- coding: utf8 -*-
 import sys
+import serial
+from serial.tools import list_ports
+import requests
+from threading import Thread
+from time import sleep
+
+# シリアルポート取得
+ports = list_ports.comports()
+
+# COM 初期化
+COM = ''
+
+def main():
+  # グローバル変数 取得
+  global COM
+
+  # シリアル通信
+  bitRate=9600
+  try:
+    ser = serial.Serial(COM, bitRate, timeout=3)
+  except serial.serialutil.SerialException:
+    print('アクセスが拒否されました')
+
+  # 初期化
+  status = 0
+  lock = 0
+  global running
+  headers = {
+    'Accept': '',
+    'Content-Type': 'application/x-www-form-urlencoded'
+  }
+
+  try:
+    while True and running :
+      # 状態の取得
+      status = ser.read_all().decode('UTF-8').rstrip('\n').rstrip('\r')
+
+      if status:
+
+        # 変更があれば
+        if status != lock:
+
+          # POST リクエスト
+          payload='status=' + status
+          response = requests.request("POST", url.get(), headers=headers, data=payload)
+          print(response.text)
+
+        lock = status
+
+      sleep(0.1)
+
+  except requests.exceptions.ConnectionError :
+    print("Webサーバーと接続できませんでした")
+  except Exception as err :
+    print(err)
+
+  finally:
+    ser.close()
+
+# --- GUI ---
 
 # python 2
 # from Tkinter import *
@@ -8,13 +67,28 @@ import sys
 from tkinter import *
 from tkinter import ttk
 
+thread = Thread(target = main)
+running = True
+
+def start():
+  # disable
+  startBtn["state"] = "disable"
+  combo["state"] = "disable"
+  url["state"] = "disable"
+
+  # start main
+  global thread
+  thread.start()
+
 # Initialization
 root = Tk()
 root.title(u"Software Title")
 
 # set COM
 def onSelectedCOM(event):
-  print(event.widget.get())
+  global COM
+  global ports
+  COM = str(ports[event.widget.current()][0])
 
 # Frame
 frame = ttk.Frame(root, padding=20)
@@ -25,9 +99,10 @@ label = ttk.Label(frame, text="Select COM")
 label.grid(column=0, row=0)
 
 # Combobox
-fruits = ['Apple', 'Banana', 'Grape']
-combo = ttk.Combobox(frame, values=fruits, state='readonly')
-combo.set(fruits[0])
+combo = ttk.Combobox(frame, values=ports, state='readonly')
+if ports:
+  combo.set(ports[0])
+  COM = str(ports[0][0])
 combo.bind("<<ComboboxSelected>>", onSelectedCOM)
 combo.grid(column=0, row=1, columnspan=2)
 
@@ -36,16 +111,21 @@ label = ttk.Label(frame, text="Set URL")
 label.grid(column=0, row=2)
 
 # Entry
-text = ttk.Entry(frame, width=20)
-text.grid(column=0, row=3, columnspan=2)
+url = ttk.Entry(frame, width=20)
+url.grid(column=0, row=3, columnspan=2)
 
 # Stop Button
 stopBtn = ttk.Button(frame, text="Stop", command=root.destroy)
 stopBtn.grid(column=0, row=4)
 
 # Start Button
-startBtn = ttk.Button(frame, text="Start", command=root.destroy)
+startBtn = ttk.Button(frame, text="Start", command=start)
 startBtn.grid(column=1, row=4)
 
 # loop
 root.mainloop()
+
+# stop main thread
+running = False
+if thread.is_alive():
+  thread.join()
