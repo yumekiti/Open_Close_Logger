@@ -100,28 +100,28 @@ label = ttk.Label(frame, text="Select COM")
 label.grid(column=0, row=0)
 
 # Combobox
-combo = ttk.Combobox(frame, values=ports, state="readonly")
+combo = ttk.Combobox(frame, values=ports, state="readonly", width=50)
 if ports:
   combo.set(ports[0])
   COM = str(ports[0][0])
 combo.bind("<<ComboboxSelected>>", onSelectedCOM)
-combo.grid(column=0, row=1, columnspan=2)
+combo.grid(column=1, row=0, sticky=E)
 
 # Label
 label = ttk.Label(frame, text="Set URL")
 label.grid(column=0, row=2)
 
 # Entry
-url = ttk.Entry(frame, width=20)
-url.grid(column=0, row=3, columnspan=2)
+url = ttk.Entry(frame, width=50)
+url.grid(column=1, row=2, sticky=E)
 
 # Stop Button
 stopBtn = ttk.Button(frame, text="Stop", command=root.destroy)
-stopBtn.grid(column=0, row=4)
+stopBtn.grid(column=0, row=3, sticky=W, pady=(20, 0))
 
 # Start Button
 startBtn = ttk.Button(frame, text="Start", command=start)
-startBtn.grid(column=1, row=4)
+startBtn.grid(column=1, row=3, sticky=E, pady=(20, 0))
 
 # loop
 root.mainloop()
