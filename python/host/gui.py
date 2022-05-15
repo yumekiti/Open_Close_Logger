@@ -9,32 +9,29 @@ from time import sleep
 ports = list_ports.comports()
 
 # COM 初期化
-COM = ''
+COM = ""
 
 def main():
   # グローバル変数 取得
   global COM
 
   # シリアル通信
-  bitRate=9600
+  bitRate = 9600
   try:
     ser = serial.Serial(COM, bitRate, timeout=3)
   except serial.serialutil.SerialException:
-    print('アクセスが拒否されました')
+    print("アクセスが拒否されました")
 
   # 初期化
   status = 0
   lock = 0
   global running
-  headers = {
-    'Accept': '',
-    'Content-Type': 'application/x-www-form-urlencoded'
-  }
+  headers = {"Accept": "", "Content-Type": "application/x-www-form-urlencoded"}
 
   try:
-    while True and running :
+    while True and running:
       # 状態の取得
-      status = ser.read_all().decode('UTF-8').rstrip('\n').rstrip('\r')
+      status = ser.read_all().decode("UTF-8").rstrip("\n").rstrip("\r")
 
       if status:
 
@@ -42,23 +39,27 @@ def main():
         if status != lock:
 
           # POST リクエスト
-          payload='status=' + status
-          response = requests.request("POST", url.get(), headers=headers, data=payload)
+          payload = "status=" + status
+          response = requests.request(
+            "POST", url.get(), headers=headers, data=payload
+          )
           print(response.text)
 
         lock = status
 
       sleep(0.1)
 
-  except requests.exceptions.ConnectionError :
+  except requests.exceptions.ConnectionError:
     print("Webサーバーと接続できませんでした")
-  except Exception as err :
+  except Exception as err:
     print(err)
 
   finally:
     ser.close()
 
+
 # --- GUI ---
+
 
 # python 2
 # from Tkinter import *
@@ -67,7 +68,7 @@ def main():
 from tkinter import *
 from tkinter import ttk
 
-thread = Thread(target = main)
+thread = Thread(target=main)
 running = True
 
 def start():
@@ -80,15 +81,15 @@ def start():
   global thread
   thread.start()
 
-# Initialization
-root = Tk()
-root.title(u"Software Title")
-
 # set COM
 def onSelectedCOM(event):
   global COM
   global ports
   COM = str(ports[event.widget.current()][0])
+
+# Initialization
+root = Tk()
+root.title("Software Title")
 
 # Frame
 frame = ttk.Frame(root, padding=20)
@@ -99,7 +100,7 @@ label = ttk.Label(frame, text="Select COM")
 label.grid(column=0, row=0)
 
 # Combobox
-combo = ttk.Combobox(frame, values=ports, state='readonly')
+combo = ttk.Combobox(frame, values=ports, state="readonly")
 if ports:
   combo.set(ports[0])
   COM = str(ports[0][0])
