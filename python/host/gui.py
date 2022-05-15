@@ -89,7 +89,7 @@ def onSelectedCOM(event):
 
 # Initialization
 root = Tk()
-root.title("Software Title")
+root.title("open_close_logger")
 
 # Frame
 frame = ttk.Frame(root, padding=20)
