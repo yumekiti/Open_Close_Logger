@@ -93,6 +93,8 @@ $ python ./python/host/main.py
   - https://www.python.org/
 - Visual Studio Code
   - https://azure.microsoft.com/ja-jp/products/visual-studio-code/
+- Thonny
+  - https://thonny.org/
 
 # 使用デバイス
 
