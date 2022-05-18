@@ -105,7 +105,7 @@ $ python ./python/host/main.py
 
 # リポジトリ
 
-https://github.com/yumekiti/OC_Trial_Lesson
+https://github.com/yumekiti/Open_Close_Logger/
 
 # 制作者
 
