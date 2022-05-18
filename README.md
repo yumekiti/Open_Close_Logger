@@ -85,21 +85,9 @@ $ python ./python/host/main.py
 
 <br><br>
 
-# 開発環境
+# [開発手順](./markdown/process.md)
 
-- Node.js
-  - https://nodejs.org/ja/
-- Python
-  - https://www.python.org/
-- Visual Studio Code
-  - https://azure.microsoft.com/ja-jp/products/visual-studio-code/
-- Thonny
-  - https://thonny.org/
-
-# 使用デバイス
-
-- Raspberry Pi Pico
-  - https://www.raspberrypi.com/products/raspberry-pi-pico/
+> 割りと参考にならないので見ないで。。
 
 <br><br>
 
