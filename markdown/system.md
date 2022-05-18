@@ -8,7 +8,7 @@
 
 1. [main.py を pico に書き込んでみよう](./system/main.md)
 
-1. [host.py を実行してみよう](./system/host.md)
+1. [open_close_logger を実行してみよう](./system/host.md)
 
 1. [余裕があれば](./system/extension.md)
 
