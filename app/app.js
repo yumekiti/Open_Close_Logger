@@ -7,7 +7,6 @@ const http = require("http").Server(app);
 const PORT = process.env.PORT || 8080;
 
 // Hello, World! を返す
-app.get("/hello", (req, res) => res.send("Hello, World!"));
 
 // publicを返す
 
