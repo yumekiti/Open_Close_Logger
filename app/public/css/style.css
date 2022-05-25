@@ -9,6 +9,4 @@
 @import url(./modules/log.css);
 @import url(./modules/responsive.css);
 
-html {
-  background-color: #fafcff;
-}
+/* background-color */

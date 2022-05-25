@@ -99,4 +99,3 @@ socket.on("event", (status) => {
 });
 
 // 時間を更新
-setInterval(() => setTime(), 1000 / 60);
