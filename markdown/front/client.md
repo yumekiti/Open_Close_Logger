@@ -14,7 +14,7 @@
 
 <br><br>
 
-/app/public/js/client.js
+[/app/public/js/client.js](../../app/public/js/client.js)
 
 ```js
 // 時間を更新

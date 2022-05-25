@@ -14,7 +14,7 @@
 
 <br><br>
 
-/app/public/css/style.css
+[/app/public/css/style.css](../../app/public/css/style.css)
 
 ```css
 html {

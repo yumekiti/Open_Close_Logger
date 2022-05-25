@@ -10,7 +10,7 @@ LチカとはLEDランプがチカチカすることを示します
 
 <br><br>
 
-/python/led.py
+[/python/led.py](./../../python/pico/led.py)
 
 ```python
 # Lチカ

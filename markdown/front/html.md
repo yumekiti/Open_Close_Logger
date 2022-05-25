@@ -14,7 +14,7 @@
 
 <br><br>
 
-/app/public/index.html
+[/app/public/index.html](../../app/public/index.html)
 
 ```html
 <!-- 現在時刻 -->

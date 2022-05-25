@@ -17,7 +17,7 @@ HTML (Hypertext Markup Language、ハイパーテキスト・マークアップ�
 
 <br><br>
 
-/app/app.js
+[/app/app.js](../../app/app.js)
 
 ```js
 // publicを返す

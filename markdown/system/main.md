@@ -12,7 +12,7 @@
 
 <br><br>
 
-/python/main.py
+[/python/main.py](./../../python/pico/main.py)
 
 ```python
 import utime

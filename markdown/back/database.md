@@ -17,7 +17,7 @@ SQLite はサーバとして動作させるのではなく単独のアプリケ�
 
 <br><br>
 
-/app/app.js
+[/app/app.js](../../app/app.js)
 
 ```js
 // 新しい状態データの作成
