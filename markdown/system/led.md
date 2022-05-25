@@ -4,6 +4,12 @@
 
 LチカとはLEDランプがチカチカすることを示します
 
+# 課題
+
+- `Lチカ`のコメントの下にコーディングしてみよう
+
+<br><br>
+
 /python/led.py
 
 ```python
@@ -12,12 +18,6 @@ while True:
     pin.toggle()
     time.sleep_ms(1000)
 ```
-
-<br><br>
-
-# 課題
-
-- `Lチカ`のコメントの下にコーディングしてみよう
 
 <br><br>
 

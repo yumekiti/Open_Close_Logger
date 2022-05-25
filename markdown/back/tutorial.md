@@ -6,15 +6,6 @@ Express とは、Web アプリケーションとモバイル・アプリケー�
 
 <br>
 
-/app/app.js
-
-```js
-// Hello, World! を返す
-app.get("/hello", (req, res) => res.send("Hello, World!"));
-```
-
-<br><br>
-
 # 課題
 
 - 下記リンクに `Hello, World!` と表示されるか、確認する
@@ -22,7 +13,16 @@ app.get("/hello", (req, res) => res.send("Hello, World!"));
 
 <br>
 
-## http://localhost:8080
+## http://localhost:8080/hello
+
+<br><br>
+
+/app/app.js
+
+```js
+// Hello, World! を返す
+app.get("/hello", (req, res) => res.send("Hello, World!"));
+```
 
 ---
 

@@ -4,6 +4,16 @@
 
 <br>
 
+# 課題
+
+- `現在時刻`のコメントの下にコーディングしてみよう
+
+<br>
+
+## http://localhost:8080
+
+<br><br>
+
 /app/public/index.html
 
 ```html
@@ -12,16 +22,6 @@
   <div id="now"></div>
 </div>
 ```
-
-<br><br>
-
-# 課題
-
-- `現在時刻`のコメントの下にコーディングしてみよう
-
-<br>
-
-## http://localhost:8080
 
 ---
 
