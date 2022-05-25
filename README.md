@@ -85,12 +85,6 @@ $ python ./python/host/main.py
 
 <br><br>
 
-# [開発手順](./markdown/process.md)
-
-> 割りと参考にならないので見ないで。。
-
-<br><br>
-
 # リポジトリ
 
 https://github.com/yumekiti/Open_Close_Logger/
