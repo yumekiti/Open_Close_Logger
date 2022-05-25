@@ -6,15 +6,6 @@ SQLite はサーバとして動作させるのではなく単独のアプリケ�
 
 <br>
 
-/app/app.js
-
-```js
-// 新しい状態データの作成
-db.prepare("INSERT INTO status(body) VALUES (?)").run(status).finalize();
-```
-
-<br><br>
-
 # 課題
 
 - データを追加してみて反映されたか確認する
@@ -23,6 +14,15 @@ db.prepare("INSERT INTO status(body) VALUES (?)").run(status).finalize();
 <br>
 
 ## http://localhost:8080/test.html
+
+<br><br>
+
+[/app/app.js](../../app/app.js)
+
+```js
+// 新しい状態データの作成
+db.prepare("INSERT INTO status(body) VALUES (?)").run(status).finalize();
+```
 
 ---
 

@@ -4,16 +4,6 @@
 
 <br>
 
-/app/public/css/style.css
-
-```css
-html {
-  background-color: #fafcff;
-}
-```
-
-<br><br>
-
 # 課題
 
 - html の`background-color`の値を変更して自分好みの色に変えてみよう
@@ -21,6 +11,16 @@ html {
 <br>
 
 ## http://localhost:8080
+
+<br><br>
+
+[/app/public/css/style.css](../../app/public/css/style.css)
+
+```css
+html {
+  background-color: #fafcff;
+}
+```
 
 ---
 

@@ -6,7 +6,13 @@
 
 <br>
 
-/python/main.py
+# 課題
+
+- 実行してうまく動作していたら書き込んでみよう。
+
+<br><br>
+
+[/python/main.py](./../../python/pico/main.py)
 
 ```python
 import utime
@@ -33,12 +39,6 @@ while True:
 
   utime.sleep(0.50)
 ```
-
-<br><br>
-
-# 課題
-
-- 実行してうまく動作していたら書き込んでみよう。
 
 <br><br>
 

@@ -6,7 +6,18 @@ HTML (Hypertext Markup Language、ハイパーテキスト・マークアップ�
 
 <br>
 
-/app/app.js
+# 課題
+
+- 下記リンクに `Hello, World!!` と表示されるか、確認する
+- `Hello, World!` の部分を変更して反映されるか確認する
+
+<br>
+
+## http://localhost:8080/test.html
+
+<br><br>
+
+[/app/app.js](../../app/app.js)
 
 ```js
 // publicを返す
@@ -18,17 +29,6 @@ app.use("/", express.static("public"));
 ```html
 <h1>Hello, World!!</h1>
 ```
-
-<br><br>
-
-# 課題
-
-- 下記リンクに `Hello, World!!` と表示されるか、確認する
-- `Hello, World!` の部分を変更して反映されるか確認する
-
-<br>
-
-## http://localhost:8080/test.html
 
 ---
 
