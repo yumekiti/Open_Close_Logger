@@ -2,6 +2,10 @@
 const express = require("express");
 const app = express();
 const http = require("http").Server(app);
+const io = require("socket.io")(http);
+// データベース関連
+const sqlite3 = require("sqlite3").verbose();
+const db = new sqlite3.Database("./database.db");
 
 // データベースの初期化
 db.serialize(() => {
