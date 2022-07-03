@@ -5,11 +5,12 @@ import requests
 from threading import Thread
 from time import sleep
 
-# シリアルポート取得
-ports = list_ports.comports()
+def init():
+  # シリアルポート取得
+  ports = list_ports.comports()
 
-# COM 初期化
-COM = ""
+  # COM 初期化
+  COM = ""
 
 def main():
   # グローバル変数 取得
@@ -115,8 +116,8 @@ label.grid(column=0, row=2)
 url = ttk.Entry(frame, width=50)
 url.grid(column=1, row=2, sticky=E)
 
-# Stop Button
-stopBtn = ttk.Button(frame, text="Stop", command=root.destroy)
+# Reload Button
+stopBtn = ttk.Button(frame, text="Reload", command=init)
 stopBtn.grid(column=0, row=3, sticky=W, pady=(20, 0))
 
 # Start Button
