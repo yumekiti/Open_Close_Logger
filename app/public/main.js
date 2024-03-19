@@ -112,7 +112,10 @@ socket.on("event", (value) => {
     items = value;
     setItems(items);
     // 履歴を表示
-    value.map(value => setHistory(value))
+    value
+      .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+      .reverse()
+      .map(value => setHistory(value))
   } else {
     items.push(value);
     setItems(items);
