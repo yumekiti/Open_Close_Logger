@@ -1,0 +1,1 @@
+pyinstaller gui.py --icon=favicon.ico --onefile --noconsole
