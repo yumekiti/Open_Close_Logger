@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./app/public/images/icon.png" width="160" alt="Logo" />
+  <img src="./app/public/icon.png" width="160" alt="Logo" />
 </p>
 
 # OpenCloseLogger_pico：開閉状態管理アプリ
