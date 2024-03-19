@@ -25,11 +25,10 @@ def main():
   # 初期化
   status = 0
   lock = 0
-  global running
-  headers = {"Accept": "", "Content-Type": "application/x-www-form-urlencoded"}
+  headers = {"Accept": "", "Content-Type": "application/json"}
 
   try:
-    while True and running:
+    while True:
       # 状態の取得
       status = ser.read_all().decode("UTF-8").rstrip("\n").rstrip("\r")
 
@@ -39,10 +38,8 @@ def main():
         if status != lock:
 
           # POST リクエスト
-          payload = "status=" + status
-          response = requests.request(
-            "POST", url.get(), headers=headers, data=payload
-          )
+          payload = {"position": position.get(), "status": status}
+          response = requests.post(url.get(), json=payload, headers=headers)
           print(response.text)
 
         lock = status
@@ -69,16 +66,15 @@ from tkinter import *
 from tkinter import ttk
 
 thread = Thread(target=main)
-running = True
 
 def start():
   # disable
   startBtn["state"] = "disable"
   combo["state"] = "disable"
   url["state"] = "disable"
+  position["state"] = "disable"
 
-  # start main
-  global thread
+  # start thread
   thread.start()
 
 # set COM
@@ -107,13 +103,21 @@ if ports:
 combo.bind("<<ComboboxSelected>>", onSelectedCOM)
 combo.grid(column=1, row=0, sticky=E)
 
-# Label
-label = ttk.Label(frame, text="Set URL")
-label.grid(column=0, row=2)
+# URL Label
+urlLabel = ttk.Label(frame, text="Set URL")
+urlLabel.grid(column=0, row=2)
 
-# Entry
+# URL input
 url = ttk.Entry(frame, width=50)
 url.grid(column=1, row=2, sticky=E)
+
+# Position Label
+positionLabel = ttk.Label(frame, text="Set Position")
+positionLabel.grid(column=0, row=1)
+
+# Position input
+position = ttk.Entry(frame, width=50)
+position.grid(column=1, row=1, sticky=E)
 
 # Stop Button
 stopBtn = ttk.Button(frame, text="Stop", command=root.destroy)
@@ -125,8 +129,3 @@ startBtn.grid(column=1, row=3, sticky=E, pady=(20, 0))
 
 # loop
 root.mainloop()
-
-# stop main thread
-running = False
-if thread.is_alive():
-  thread.join()
