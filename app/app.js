@@ -17,7 +17,7 @@ db.serialize(() => {
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     status BOOLEAN default 0,
     position TEXT,
-    created_at TIMESTAMP DEFAULT(DATETIME('now','+9 hours'))
+    created_at TIMESTAMP DEFAULT(strftime('%Y-%m-%d %H:%M:%f', 'now', '+9 hours'))
   )`);
 });
 
