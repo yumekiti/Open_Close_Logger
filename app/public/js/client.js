@@ -1,102 +1,131 @@
 // コンソールに表示
 console.log("hello, console!");
 
+// HTMLの要素を取得
+const nowElement = document.getElementById("now");
+const historyElement = document.getElementById("history");
+const itemsElement = document.getElementById("items");
+
+// itemの状態を保持
+let items = [];
+let historyPosition = "";
+
 // モジュールの読み込み
 const socket = io();
 
 // ゼロ埋め
-const zeroPadding = (date) => {
-  return date.toString().padStart(2, "0");
-};
+const zeroPadding = (date) => date.toString().padStart(2, "0")
 
 // フォーマットされた日付の生成
 const formatDate = (date) => {
-  const formatted =
-    date.getFullYear() +
-    "/" +
-    zeroPadding(date.getMonth() + 1) +
-    "/" +
-    zeroPadding(date.getDate());
-  return formatted;
-};
+  return `${zeroPadding(date.getMonth() + 1)}/${zeroPadding(date.getDate())}`
+}
 
-// フォーマットされた日付の生成
+// フォーマットされた時刻の生成
 const formatTime = (date) => {
-  const formatted =
-    zeroPadding(date.getHours()) +
-    ":" +
-    zeroPadding(date.getMinutes()) +
-    ":" +
-    zeroPadding(date.getSeconds());
-  return formatted;
-};
+  return `${zeroPadding(date.getHours())}:${zeroPadding(date.getMinutes())}`
+}
 
 // 現在時刻
 const setTime = () => {
-  const date = new Date();
-  const now = document.getElementById("now");
-
-  now.innerHTML = `
-    <h1>${formatDate(date)}</h1>
-    <h1>${formatTime(date)}</h1>
+  const currentDate = new Date();
+  nowElement.innerHTML = `
+    <p>${formatDate(currentDate)}</p>
+    <p>${formatTime(currentDate)}</p>
   `;
 };
 
 // ログの生成
-const newState = (value) => {
-  const element = document.getElementById("logs");
-  const name = document.getElementById("name");
-  const div = document.createElement("div");
-  div.className = "log";
-
-  // 日付のフォーマット
+const setHistory = (value) => {
   const date = new Date(value.created_at);
+  const bgColor = value.status ? "bg-sky-100" : "bg-red-100";
 
   // HTMLの追加
-  div.innerHTML = `
-    <div class="card">
-      <div>
-        <p>${formatDate(date)}</p>
-        <p>${formatTime(date)}</p>
+  const historyHTML = `
+    <div class="flex shadow-md rounded-md p-4 items-center justify-around bg-white ${bgColor}">
+      <div class="w-full flex flex-col justify-center items-center text-2xl">
+        <span>場所 - ${value.position}</span>
+        <span>${formatDate(date)} ${formatTime(date)}</span>
       </div>
-      <div>
-        <h1>${name.textContent}</h1>
-      </div>
-      <div class="log-status">
-      ${
-        value.body
-          ? "<img src='images/open.svg' width='24' height='26.5' alt='open' />"
-          : "<img src='images/close.svg' width='24' height='26.5' alt='close' />"
-      }
-      <h2>${value.body ? "OPEN" : "CLOSE"}</h2>
+      <span class="flex justify-center items-center w-full">
+        ${value.status ? "🔓" : "🔒"}
+      </span>
     </div>
   `;
-  element.prepend(div);
+  historyElement.insertAdjacentHTML("afterbegin", historyHTML);
+
+  twemoji.parse(document.body);
 };
 
+// 一部のHistoryを表示
+const handleClickHistory = (position) => {
+  historyPosition = position; // 履歴の位置を保持
+  historyElement.innerHTML = ""; // 初期化
+
+  // アイテムをフィルタリングして表示
+  items
+    .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+    .reverse()
+    .filter((value) => value.position === position).forEach((value) => {
+      setHistory(value);
+    }
+  );
+}
+
+const setItems = (values) => {
+  itemsElement.innerHTML = ""; // 初期化
+
+  // 重複を削除し、アイテムを表示
+  values
+    .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+    .filter((value, index, self) => self.findIndex(v => v.position === value.position) === index)
+    .forEach((value) => {
+      const date = new Date(value.created_at);
+      const diff = new Date() - date;
+      const bgColor = diff < 600000 ? "bg-green-100" : "bg-white";
+
+      itemsElement.innerHTML += `
+        <button
+          ${/* 10分以内に変更があれば緑、30分以内なら黄色、60分以内なら水色、それ以外は白 */ ""}
+          class="flex flex-col shadow-md rounded-md p-4 items-center justify-center gap-2 hover:opacity-60 ${bgColor}"
+          onclick="handleClickHistory('${value.position}')"
+        >
+          <span class="flex justify-center items-center w-full">
+            ${value.status ? "🔓" : "🔒"}
+          </span>
+          <div class="flex flex-col justify-center items-center">
+            <span>場所 - ${value.position}</span>
+            <span>${formatDate(date)} ${formatTime(date)}</span>
+          </div>
+        </button>
+      `;
+    }
+  );
+
+  twemoji.parse(document.body);
+}
+
 // データの受け取ったとき
-socket.on("event", (status) => {
-  // 最新の状態を入れる用
-  let latest;
-
-  // 初期ロードかどうか
-  if (Array.isArray(status)) {
-    // 最新の状態を入れる
-    latest = status.slice(-1)[0].body;
-    // 複数ログを生成
-    status.map((value) => newState(value));
+socket.on("event", (value) => {
+  if (Array.isArray(value)) {
+    // アイテムを更新
+    items = value;
+    setItems(items);
+    // 履歴を表示
+    value.map(value => setHistory(value))
   } else {
-    // 最新の状態を入れる
-    latest = status.body;
-    // 単一ログを生成
-    newState(status);
+    items.push(value);
+    setItems(items);
+    // 履歴を表示
+    if (historyPosition && value.position === historyPosition) {
+      setHistory(value);
+    } else if (!historyPosition) {
+      setHistory(value);
+    }
   }
-
-  // 最新の状態の画像に変更
-  document.getElementById("status").innerHTML = latest
-    ? "<img src='images/open.svg' width='122' height='136' alt='open' />"
-    : "<img src='images/close.svg' width='122' height='136' alt='close' />";
 });
 
 // 時間を更新
 setInterval(() => setTime(), 1000 / 60);
+
+twemoji.parse(document.body);

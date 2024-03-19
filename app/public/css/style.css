@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto);
+/* @import url(https://fonts.googleapis.com/css?family=Roboto);
 @import url(./modules/global.css);
 @import url(./modules/loading.css);
 @import url(./modules/header.css);
@@ -7,8 +7,9 @@
 @import url(./modules/position.css);
 @import url(./modules/status.css);
 @import url(./modules/log.css);
-@import url(./modules/responsive.css);
+@import url(./modules/responsive.css); */
 
 html {
   background-color: #fafcff;
+  color: #333;
 }

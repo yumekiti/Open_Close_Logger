@@ -7,92 +7,42 @@
     <link rel="icon" href="images/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
     <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@twemoji/api@latest/dist/twemoji.min.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <header>
-      <div class="icon">
-        <img src="images/logo.svg" width="150" height="28" alt="icon" />
+    <header class="h-16 bg-white flex items-center justify-center px-4">
+      <div class="icon text-4xl space-x-2 flex items-center">
+        <span class="font-bold text-sky-400">OC</span>
+        <span class="text-gray-800">Logger</span>
       </div>
     </header>
 
-    <div class="loading">
-      <img src="images/icon.png" width="160" alt="Logo" />
-    </div>
-    <div class="grid">
-      <div class="left">
-        <!-- タイトル -->
-        <div class="card-fit">
-          <div class="title">
-            <img src="images/clock.svg" width="24" height="24" alt="clock" />
-            <h1>現在時刻</h1>
-          </div>
-        </div>
-
+    <!-- content -->
+    <div class="py-6 container mx-auto gap-6 grid grid-cols-1 xl:grid-cols-2">
+      <div class="left w-full flex flex-col gap-6">
         <!-- 現在時刻 -->
-        <div class="card">
-          <div id="now"></div>
-        </div>
-
-        <!-- タイトル -->
-        <div class="position-title">
-          <div class="card-fit">
-            <div class="title">
-              <img
-                src="images/building.svg"
-                width="24"
-                height="24"
-                alt="building"
-              />
-              <h1>設置場所</h1>
-            </div>
-          </div>
-        </div>
-
-        <!-- 場所 -->
-        <div class="position">
-          <div class="card">
-            <div>
-              <!-- 場所の名前を変更してください -->
-              <h1 id="name">2号館4階&nbsp;2404教室</h1>
-              <!-- カテゴリの名前を変更してください -->
-              <h1>ドア</h1>
-            </div>
-          </div>
+        <div class="h-20 w-full bg-white shadow-md rounded-md p-4 flex items-center justify-center">
+          <div id="now" class="flex space-x-8 text-4xl"></div>
         </div>
 
         <!-- 現在の開閉状態の画像 -->
-        <div class="status">
-          <div class="card-fit">
-            <div id="status">
-              <img
-                src="images/close.svg"
-                width="122"
-                height="136"
-                alt="close"
-              />
-            </div>
-          </div>
-        </div>
+        <div id="items" class="w-full grid grid-cols-4 gap-4"></div>
       </div>
 
-      <div class="right">
-        <!-- タイトル -->
-        <div class="log-title">
-          <div class="card-fit">
-            <div class="title">
-              <img
-                src="images/history.svg"
-                width="24"
-                height="24"
-                alt="clock"
-              />
-              <h1>開閉履歴</h1>
-            </div>
+      <!-- history -->
+      <div class="right w-full flex flex-col gap-6">
+        <div class="h-20 w-full bg-white shadow-md rounded-md p-4 flex items-center justify-center">
+          <div id="now" class="flex space-x-8 text-4xl flex items-center justify-center">
+            <span class="w-8">⌛</span>
+            History
           </div>
         </div>
 
         <!-- 開閉ログ表示 -->
-        <div id="logs"></div>
+        <div id="history" class="w-full flex flex-col gap-4"></div>
+      </div>
+
       </div>
     </div>
     <script src="/js/client.js"></script>
