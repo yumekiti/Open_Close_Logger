@@ -1,27 +1,31 @@
-import utime
+from time import sleep_ms
 from machine import Pin
 
-# 宣言
-sw = Pin(15, Pin.IN, Pin.PULL_UP)
-led = Pin(25, Pin.OUT)
+# 定数の定義
+SW_PIN = 1
+LED_PIN = 25
+DEBOUNCE_DELAY_MS = 50
 
-# 変数の初期化
-status = sw.value()
-lock = 0
-led.value(status)
+# ピンの初期化
+sw = Pin(SW_PIN, Pin.IN, Pin.PULL_UP)
+led = Pin(LED_PIN, Pin.OUT)
+
+# 初期状態の取得
+prev_status = sw.value()
+led.value(prev_status)
 
 while True:
+  # スイッチの状態を取得
+  current_status = sw.value()
 
-  # 読み込み
-  status = sw.value()
-
-  # 変更があった時
-  if status != lock:
+  # 状態が変化した場合
+  if current_status != prev_status:
     # 状態を表示
-    print(status)
-    # 状態 True なら光らせる
-    led.value(status)
+    print(current_status)
+    # LEDの状態を変更
+    led.value(current_status)
+    # 前回の状態を更新
+    prev_status = current_status
 
-  lock = status
-
-  utime.sleep(0.50)
+  # デバウンスのための遅延
+  sleep_ms(DEBOUNCE_DELAY_MS)
