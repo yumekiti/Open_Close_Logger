@@ -22,11 +22,12 @@ bitRate = 9600
 try:
   ser = serial.Serial(COM, bitRate, timeout=3)
   url = input("WebサーバーのURLを入力してください : ")
+  position = input("位置を入力してください : ")
   print("Ready")
 except serial.serialutil.SerialException:
   print("アクセスが拒否されました")
 
-headers = {"Accept": "", "Content-Type": "application/x-www-form-urlencoded"}
+headers = {"Accept": "", "Content-Type": "application/json"}
 
 # 初期化
 status = 0
@@ -41,9 +42,9 @@ try:
 
       # 変更があれば
       if status != lock:
-        payload = "status=" + status
         # POST リクエスト
-        response = requests.request("POST", url, headers=headers, data=payload)
+        payload = {"position": position, "status": status}
+        response = requests.request("POST", url, headers=headers, json=payload)
         print(response.text)
 
       lock = status

@@ -3,9 +3,9 @@ import requests
 
 url = "http://localhost:8080"
 
-payload = "status=" + sys.argv[1]
-headers = {"Accept": "", "Content-Type": "application/x-www-form-urlencoded"}
+headers = {"Accept": "", "Content-Type": "application/json"}
+payload = {"position": "asd", "status": "1"}
 
-response = requests.request("POST", url, headers=headers, data=payload)
+response = requests.request("POST", url, headers=headers, json=payload)
 
 print(response.text)
